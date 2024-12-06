@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Form, Input, Button, Card, Spin, message } from 'antd';
-import { login } from '../api/auth';
+import { login } from '../api/auth.ts';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -13,7 +13,7 @@ const Login = () => {
       const response = await login(values.username, values.password);
       console.log('登录成功:', response.data);
       localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       console.error('登录失败:', error);
       message.error('登录失败，请检查用户名和密码。');

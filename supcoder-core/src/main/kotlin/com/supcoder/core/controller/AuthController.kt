@@ -3,6 +3,7 @@ package com.supcoder.core.controller
 import com.supcoder.core.model.User
 //import com.supcoder.core.service.UserService
 import com.supcoder.core.util.JWTUtil
+import com.supcoder.core.util.ResponseResult
 import org.mindrot.jbcrypt.BCrypt
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -58,17 +59,10 @@ class AuthController{
      * @return 登录成功返回token，否则返回错误信息
      */
     @GetMapping("/mock-login")
-    fun mockLoginRequest(): ResponseEntity<String> {
-//        val user = userService.findByUsername(loginRequest.username)
-//            ?: return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found")
-//
-//        if (!BCrypt.checkpw(loginRequest.password, user.password)) {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password")
-//        }
-
-//        val token = JWTUtil.generateToken(user.username)
+    fun mockLoginRequest(): ResponseEntity<ResponseResult<String>?> {
         val token = JWTUtil.generateToken("supcoder")
-        return ResponseEntity.ok(token)
+        val response = ResponseResult.success(token)
+        return ResponseEntity.ok(response)
     }
 }
 
