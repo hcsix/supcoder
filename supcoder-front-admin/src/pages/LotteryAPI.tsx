@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Button, Space, Tag, Typography, Row, Col } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import type { LotteryAPI } from '../types';

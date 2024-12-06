@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Button, Space, Tag, Typography, Row, Col } from 'antd';
 import { PlusOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import type { WeatherStation } from '../types';
