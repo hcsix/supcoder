@@ -12,6 +12,8 @@ import WeatherAPI from './pages/WeatherAPI';
 import Login from './pages/Login';
 import './i18n';
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
+import Register from "./pages/Register.tsx";
+import Auth from "./pages/auth/Auth.tsx";
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
           <ConfigProvider>
             <BrowserRouter>
               <Routes>
-                <Route path="/login" element={<Login />} />
+                {/*<Route path="/login" element={<Login />} />*/}
+                <Route path="/login" element={<Auth />} />
+                <Route path="/register" element={<Register />} />
                 <Route
                     path="/"
                     element={

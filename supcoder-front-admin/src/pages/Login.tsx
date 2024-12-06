@@ -4,8 +4,8 @@ import {Form, Input, Button, Card, Spin, message, Checkbox} from 'antd';
 import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToken } from '../store/authSlice';
 import { RootState } from '../store';
+import {setCredentials} from "../store/slices/authSlice.ts";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,19 @@ const Login = () => {
     try {
       const response = await login(values.username, values.password);
       console.log('登录成功:', response.data);
-      dispatch(setToken(response.data));
+      const authData = {
+        user: {
+          id: '1',
+          username: values.username,
+          nickname: 'Test User',
+          role: 'user',
+          secretKey: 'test-key',
+          password: '',
+        },
+        token: response.data,
+      };
+
+      dispatch(setCredentials(authData));
 
       // 如果记住密码被勾选，则保存用户名到 localStorage
       if (remember) {
@@ -92,6 +104,9 @@ const Login = () => {
                 </Button>
               </Spin>
             </Form.Item>
+            <Button type="link" onClick={() => navigate('/register')}>
+              注册新账号
+            </Button>
           </Form>
         </Card>
       </div>

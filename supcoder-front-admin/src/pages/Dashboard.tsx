@@ -1,7 +1,7 @@
 import { Card, Row, Col, Statistic, Typography } from 'antd';
 import { UserOutlined, ApiOutlined, CloudOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../store/authSlice';
+import {logout} from "../store/slices/authSlice.ts";
 const { Title } = Typography;
 
 const Dashboard = () => {
@@ -9,7 +9,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(setToken(null));
+    dispatch(logout());
     window.location.href = '/login'; // 重定向到登录页面
   };
 
