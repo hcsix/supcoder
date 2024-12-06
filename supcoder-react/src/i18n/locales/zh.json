@@ -1,0 +1,28 @@
+{
+  "common": {
+    "dashboard": "仪表盘",
+    "users": "用户管理",
+    "lottery": "彩票API",
+    "weather": "天气API",
+    "addNew": "新增",
+    "status": "状态",
+    "lastUpdate": "最后更新",
+    "actions": "操作"
+  },
+  "dashboard": {
+    "overview": "仪表盘概览",
+    "totalUsers": "总用户数",
+    "activeAPIs": "活跃API",
+    "weatherStations": "天气站点"
+  },
+  "weather": {
+    "title": "天气API管理",
+    "addStation": "添加站点",
+    "location": "位置",
+    "coordinates": "坐标",
+    "status": {
+      "online": "在线",
+      "offline": "离线"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "common": {
+    "dashboard": "Dashboard",
+    "users": "User Management",
+    "lottery": "Lottery API",
+    "weather": "Weather API",
+    "addNew": "Add New",
+    "status": "Status",
+    "lastUpdate": "Last Update",
+    "actions": "Actions"
+  },
+  "dashboard": {
+    "overview": "Dashboard Overview",
+    "totalUsers": "Total Users",
+    "activeAPIs": "Active APIs",
+    "weatherStations": "Weather Stations"
+  },
+  "weather": {
+    "title": "Weather API Management",
+    "addStation": "Add Station",
+    "location": "Location",
+    "coordinates": "Coordinates",
+    "status": {
+      "online": "Online",
+      "offline": "Offline"
+    }
+  }
+}

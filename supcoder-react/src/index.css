@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-bg: #ffffff;
+}
+
+.dark {
+  --header-bg: #141414;
+}
+
+/* Dark mode styles */
+.dark .ant-layout {
+  background: #141414;
+}
+
+.dark .ant-layout-sider {
+  background: #1f1f1f;
+}
+
+.dark .ant-menu {
+  background: #1f1f1f;
+}
+
+.dark .ant-card {
+  background: #1f1f1f;
+}
+
+/* Ant Design Mobile Overrides */
+@media (max-width: 768px) {
+  .ant-table {
+    font-size: 14px;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+  
+  .ant-layout-sider {
+    position: fixed;
+    height: 100vh;
+    z-index: 999;
+  }
+  
+  .ant-layout-sider-collapsed {
+    transform: translateX(-100%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Light mode scrollbar */
+:root {
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #888;
+  --scrollbar-thumb-hover: #555;
+}
+
+/* Dark mode scrollbar */
+.dark {
+  --scrollbar-track: #1f1f1f;
+  --scrollbar-thumb: #444;
+  --scrollbar-thumb-hover: #666;
+}
