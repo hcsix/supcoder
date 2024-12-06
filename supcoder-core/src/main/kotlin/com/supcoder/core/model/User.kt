@@ -11,14 +11,14 @@ import jakarta.persistence.Id
  * @author lee
  * @date 2024/12/6
  */
-@Entity
+//@Entity
 data class User(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long = 0,
+//    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long = 0,
     var username: String = "",
     var password: String = "",
     var email: String = ""
 ) {
     // 添加无参构造函数
-    constructor() : this(0, "", "", "")
+//    constructor() : this(0, "", "", "")
 }
    
