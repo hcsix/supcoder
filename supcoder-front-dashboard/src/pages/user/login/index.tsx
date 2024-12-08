@@ -128,20 +128,9 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src="/logo.svg" />}
-          title="SUPCODER"
-          subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
           initialValues={{
             autoLogin: true,
           }}
-          actions={[
-            <FormattedMessage
-              key="loginWith"
-              id="pages.login.loginWith"
-              defaultMessage="其他登录方式"
-            />,
-            <ActionIcons key="icons" />,
-          ]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
           }}
@@ -327,11 +316,9 @@ const Login: React.FC = () => {
         </div>
         {/* 右侧广告区域 */}
         <div className={styles.adSection}>
-          <h2 className={styles.adTitle}>欢迎使用 SUPCODER</h2>
-          <p className={styles.adDescription}>这里是首页广告内容...</p>
-          <button className={styles.adButton} onClick={() => window.open('https://supcoder.com')}>
-            了解更多
-          </button>
+
+          <img src="/logo.svg" alt="Logo"  className={styles.adImg}></img>
+
         </div>
       </div>
     </div>

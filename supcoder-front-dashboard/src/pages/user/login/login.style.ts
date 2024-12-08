@@ -82,6 +82,18 @@ const useStyles = createStyles(({ token }) => {
         backgroundColor: token.colorPrimaryHover,
       },
     },
+    adCanvas :{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      pointerEvents: 'none'
+    },
+    adImg: {
+      width: '300px', /* 根据需要调整宽度 */
+      height: 'auto' /* 保持宽高比 */
+    }
   };
 });
 
