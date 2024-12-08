@@ -1,4 +1,3 @@
-import { Footer } from '@/components';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import {
@@ -17,46 +16,12 @@ import {
 } from '@ant-design/pro-components';
 import { FormattedMessage, Helmet, SelectLang, useIntl, useModel } from '@umijs/max';
 import { Alert, message, Tabs } from 'antd';
-import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
+import useStyles from './login.style';
 
-const useStyles = createStyles(({ token }) => {
-  return {
-    action: {
-      marginLeft: '8px',
-      color: 'rgba(0, 0, 0, 0.2)',
-      fontSize: '24px',
-      verticalAlign: 'middle',
-      cursor: 'pointer',
-      transition: 'color 0.3s',
-      '&:hover': {
-        color: token.colorPrimaryActive,
-      },
-    },
-    lang: {
-      width: 42,
-      height: 42,
-      lineHeight: '42px',
-      position: 'fixed',
-      right: 16,
-      borderRadius: token.borderRadius,
-      ':hover': {
-        backgroundColor: token.colorBgTextHover,
-      },
-    },
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh',
-      overflow: 'auto',
-      backgroundImage:
-        "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
-      backgroundSize: '100% 100%',
-    },
-  };
-});
+
 
 const ActionIcons = () => {
   const { styles } = useStyles();
@@ -155,13 +120,10 @@ const Login: React.FC = () => {
         </title>
       </Helmet>
       <Lang />
-      <div
-        style={{
-          flex: '1',
-          padding: '32px 0',
-        }}
-      >
-        <LoginForm
+      <div className={styles.loginContainer}>
+        {/* 左侧登录表单 */}
+        <div className={styles.loginForm}>
+          <LoginForm
           contentStyle={{
             minWidth: 280,
             maxWidth: '75vw',
@@ -362,8 +324,16 @@ const Login: React.FC = () => {
             </a>
           </div>
         </LoginForm>
+        </div>
+        {/* 右侧广告区域 */}
+        <div className={styles.adSection}>
+          <h2 className={styles.adTitle}>欢迎使用 SUPCODER</h2>
+          <p className={styles.adDescription}>这里是首页广告内容...</p>
+          <button className={styles.adButton} onClick={() => window.open('https://supcoder.com')}>
+            了解更多
+          </button>
+        </div>
       </div>
-      <Footer />
     </div>
   );
 };
