@@ -93,7 +93,12 @@ const useStyles = createStyles(({ token }) => {
     adImg: {
       width: '300px', /* 根据需要调整宽度 */
       height: 'auto' /* 保持宽高比 */
-    }
+    },
+    registerButton: {
+      margin: '32px',
+      display: 'block',
+      textAlign: 'center',
+    },
   };
 });
 
