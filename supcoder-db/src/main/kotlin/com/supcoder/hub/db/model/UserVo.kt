@@ -6,7 +6,7 @@ package com.supcoder.hub.db.model
  * @author lee
  * @date 2024/12/9
  */
-        data class UserVo(
+ data class UserVo(
     val id: Long = 0,
     val username: String,
     val email: String,
@@ -19,7 +19,7 @@ package com.supcoder.hub.db.model
     val notifyCount: Int? = null,
     val unreadCount: Int? = null,
     val country: String? = null,
-    val access: String? = null,
+    val level: String? = null,
     val address: String? = null,
     val phone: String? = null
 )

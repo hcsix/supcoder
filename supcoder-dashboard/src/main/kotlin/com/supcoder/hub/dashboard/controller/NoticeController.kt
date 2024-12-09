@@ -1,8 +1,8 @@
 package com.supcoder.hub.dashboard.controller
 
-import com.supcoder.hub.core.model.vo.NoticeIconItem
-import com.supcoder.hub.core.model.vo.NoticeIconItemType
-import com.supcoder.hub.core.model.vo.NoticeIconList
+import com.supcoder.hub.dashboard.model.vo.NoticeIconItem
+import com.supcoder.hub.dashboard.model.vo.NoticeIconItemType
+import com.supcoder.hub.dashboard.model.vo.NoticeIconList
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

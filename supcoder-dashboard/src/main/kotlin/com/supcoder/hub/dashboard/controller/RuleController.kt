@@ -1,5 +1,7 @@
 package com.supcoder.hub.dashboard.controller
 
+import com.supcoder.hub.dashboard.model.vo.RuleList
+import com.supcoder.hub.dashboard.model.vo.RuleListItem
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

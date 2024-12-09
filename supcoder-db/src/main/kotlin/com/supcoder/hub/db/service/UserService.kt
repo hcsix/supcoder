@@ -78,7 +78,6 @@ class UserService {
         return userMapper.selectByExample(userExample)
     }
 
-
     fun querySelective(
         username: String?,
         page: Int,

@@ -22,10 +22,10 @@
             <artifactId>supcoder-core</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.supcoder</groupId>-->
-<!--            <artifactId>supcoder-dashboard</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.supcoder</groupId>
+            <artifactId>supcoder-dashboard</artifactId>
+        </dependency>
 
     </dependencies>
 

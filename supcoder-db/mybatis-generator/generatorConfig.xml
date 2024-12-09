@@ -56,7 +56,18 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.supcoder.hub.db.dao"
                              targetProject="src/main/kotlin"/>
         <!--表名-->
+        <!--用户表-->
         <table tableName="user">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="role_ids" javaType="java.lang.Integer[]"
+                            typeHandler="org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler"/>
+        </table>
+        <!--权限-->
+        <table tableName="permission">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <!--角色-->
+        <table tableName="role">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 

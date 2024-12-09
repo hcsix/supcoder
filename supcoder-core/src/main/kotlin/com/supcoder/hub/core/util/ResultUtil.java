@@ -77,4 +77,37 @@ public class ResultUtil {
     }
 
 
+
+    public static Object badArgument() {
+        return error(401, "参数不对");
+    }
+
+    public static Object badArgumentValue() {
+        return error(402, "参数值不对");
+    }
+
+    public static Object unLogin() {
+        return error(501, "请登录");
+    }
+
+    public static Object serious() {
+        return error(502, "系统内部错误");
+    }
+
+    public static Object unSupport() {
+        return error(503, "业务不支持");
+    }
+
+    public static Object updatedDateExpired() {
+        return error(504, "更新数据已经失效");
+    }
+
+    public static Object updatedDataFailed() {
+        return error(505, "更新数据失败");
+    }
+
+    public static Object unAuth() {
+        return error(506, "无操作权限");
+    }
+
 }
