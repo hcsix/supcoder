@@ -1,4 +1,4 @@
-package com.supcoder.core.model.domain
+package com.supcoder.hub.core.model.domain
 
 data class User(
     val id: Long = 0,

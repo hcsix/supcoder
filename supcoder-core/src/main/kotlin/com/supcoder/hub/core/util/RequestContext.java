@@ -1,4 +1,4 @@
-package com.supcoder.core.util;
+package com.supcoder.hub.core.util;
 
 
 import java.io.Serializable;

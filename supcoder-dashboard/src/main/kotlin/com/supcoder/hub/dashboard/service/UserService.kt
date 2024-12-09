@@ -1,6 +1,6 @@
 package com.supcoder.hub.dashboard.service
 
-import com.supcoder.core.model.domain.User
+import com.supcoder.hub.core.model.domain.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

@@ -1,7 +1,7 @@
 package com.supcoder.core.controller
 
-import com.supcoder.core.model.vo.RuleList
-import com.supcoder.core.model.vo.RuleListItem
+import com.supcoder.hub.core.model.vo.RuleList
+import com.supcoder.hub.core.model.vo.RuleListItem
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

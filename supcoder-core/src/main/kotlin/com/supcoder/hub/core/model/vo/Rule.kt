@@ -1,4 +1,4 @@
-package com.supcoder.core.model.vo
+package com.supcoder.hub.core.model.vo
 
 /**
  * RuleListItem

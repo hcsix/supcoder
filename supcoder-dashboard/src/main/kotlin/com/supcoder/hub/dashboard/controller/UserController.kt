@@ -1,11 +1,11 @@
 package com.supcoder.hub.dashboard.controller
 
-import com.supcoder.core.model.vo.City
-import com.supcoder.core.model.vo.CurrentUser
-import com.supcoder.core.model.vo.Geographic
-import com.supcoder.core.model.vo.Province
-import com.supcoder.core.model.vo.Tag
-import com.supcoder.core.model.domain.User
+import com.supcoder.hub.core.model.vo.City
+import com.supcoder.hub.core.model.vo.CurrentUser
+import com.supcoder.hub.core.model.vo.Geographic
+import com.supcoder.hub.core.model.vo.Province
+import com.supcoder.hub.core.model.vo.Tag
+import com.supcoder.hub.core.model.domain.User
 import com.supcoder.core.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity

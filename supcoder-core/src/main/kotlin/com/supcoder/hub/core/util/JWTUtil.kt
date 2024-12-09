@@ -1,4 +1,4 @@
-package com.supcoder.core.util
+package com.supcoder.hub.core.util
 
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm

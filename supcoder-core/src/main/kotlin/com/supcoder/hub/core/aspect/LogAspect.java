@@ -1,9 +1,9 @@
-package com.supcoder.core.aspect;
+package com.supcoder.hub.core.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
-import com.supcoder.core.util.RequestContext;
-import com.supcoder.core.util.SnowFlake;
+import com.supcoder.hub.core.util.RequestContext;
+import com.supcoder.hub.core.util.SnowFlake;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;

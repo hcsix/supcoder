@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-class WebConfig : WebMvcConfigurer {
+open class WebConfig : WebMvcConfigurer {
 
     @Value("\${allowed.origins}")
     private lateinit var allowedOrigins: String

@@ -1,9 +1,9 @@
-package com.supcoder.core.exception;
+package com.supcoder.hub.core.exception;
 
 
 
-import com.supcoder.core.util.JsonResult;
-import com.supcoder.core.util.ResultUtil;
+import com.supcoder.hub.core.util.JsonResult;
+import com.supcoder.hub.core.util.ResultUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;

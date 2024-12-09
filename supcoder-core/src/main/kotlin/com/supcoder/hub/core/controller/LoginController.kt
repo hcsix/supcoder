@@ -1,9 +1,9 @@
 package com.supcoder.core.controller
 
 
-import com.supcoder.core.model.vo.FakeCaptcha
-import com.supcoder.core.model.vo.LoginParams
-import com.supcoder.core.model.vo.LoginResult
+import com.supcoder.hub.core.model.vo.FakeCaptcha
+import com.supcoder.hub.core.model.vo.LoginParams
+import com.supcoder.hub.core.model.vo.LoginResult
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 

@@ -1,4 +1,4 @@
-package com.supcoder.core.exception;
+package com.supcoder.hub.core.exception;
 
 /**
  * @author lee

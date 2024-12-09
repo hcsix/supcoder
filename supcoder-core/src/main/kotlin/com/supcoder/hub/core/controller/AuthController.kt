@@ -1,7 +1,7 @@
 package com.supcoder.core.controller
 
 //import com.supcoder.core.service.UserService
-import com.supcoder.core.model.domain.User
+import com.supcoder.hub.core.model.domain.User
 import com.supcoder.core.util.JWTUtil
 import com.supcoder.core.util.JsonResult
 import com.supcoder.core.util.ResultUtil

@@ -1,7 +1,7 @@
-package com.supcoder.core.util;
+package com.supcoder.hub.core.util;
 
 
-import com.supcoder.core.exception.ErrorCodeEnum;
+import com.supcoder.hub.core.exception.ErrorCodeEnum;
 
 /**
  * @author lee
