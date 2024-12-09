@@ -1,14 +1,14 @@
 package com.supcoder.core.controller
 
-import com.supcoder.core.model.User
 //import com.supcoder.core.service.UserService
+import com.supcoder.core.model.domain.User
 import com.supcoder.core.util.JWTUtil
-import com.supcoder.core.util.ResponseResult
+import com.supcoder.core.util.JsonResult
+import com.supcoder.core.util.ResultUtil
 import org.mindrot.jbcrypt.BCrypt
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+
 /**
  * AuthController
  *
@@ -59,9 +59,9 @@ class AuthController{
      * @return 登录成功返回token，否则返回错误信息
      */
     @GetMapping("/mock-login")
-    fun mockLoginRequest(): ResponseEntity<ResponseResult<String>?> {
+    fun mockLoginRequest(): ResponseEntity<JsonResult<String>> {
         val token = JWTUtil.generateToken("supcoder")
-        val response = ResponseResult.success(token)
+        val response = ResultUtil.success(token) as JsonResult<String>
         return ResponseEntity.ok(response)
     }
 }
