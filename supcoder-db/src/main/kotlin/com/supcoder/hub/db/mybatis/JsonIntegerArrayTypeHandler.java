@@ -1,4 +1,4 @@
-package com.supcoder.hub.db.db.mybatis;
+package com.supcoder.hub.db.mybatis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.ibatis.type.BaseTypeHandler;

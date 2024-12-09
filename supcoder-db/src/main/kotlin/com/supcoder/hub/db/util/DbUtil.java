@@ -1,4 +1,4 @@
-package com.supcoder.hub.db.db.util;
+package com.supcoder.hub.db.util;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
