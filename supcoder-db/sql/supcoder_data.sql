@@ -1,0 +1,37 @@
+INSERT INTO `user` (
+    `username`,
+    `password`,
+    `email`,
+    `name`,
+    `avatar`,
+    `signature`,
+    `title`,
+    `group`,
+    `notify_count`,
+    `unread_count`,
+    `country`,
+    `access`,
+    `address`,
+    `phone`,
+    `add_time`,
+    `update_time`,
+    `deleted`
+) VALUES (
+             'admin',
+             'admin', -- 实际应用中应使用加密后的密码
+             'supcoder.lee@gmail.com',
+             'Administrator',
+             'https://example.com/avatar.png',
+             'Welcome to Supcoder Hub!',
+             'Admin',
+             'AdminGroup',
+             0,
+             0,
+             'China',
+             'all_access',
+             'Beijing, China',
+             '1234567890',
+             NOW(),
+             NOW(),
+             0
+         );
