@@ -1,7 +1,6 @@
-package com.supcoder.hub.dashboard.shiro;
+package com.supcoder.hub.dashboard.auth;
 
 
-import com.supcoder.hub.core.util.bcrypt.BCryptPasswordEncoder;
 import com.supcoder.hub.db.domain.User;
 import com.supcoder.hub.db.service.PermissionService;
 import com.supcoder.hub.db.service.RoleService;
@@ -69,8 +68,9 @@ public class UserAuthorizingRealm extends AuthorizingRealm {
             throw new UnknownAccountException("找不到用户（" + username + "）的帐号信息");
         }
         User user = userList.get(0);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if (!encoder.matches(password, user.getPassword())) {
+        if (!password.equals(user.getPassword())) {
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        if (!encoder.matches(password, user.getPassword())) {
             throw new UnknownAccountException("找不到用户（" + username + "）的帐号信息");
         }
         return new SimpleAuthenticationInfo(user, password, getName());

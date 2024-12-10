@@ -1,18 +1,20 @@
 package com.supcoder.hub.dashboard.config;
 
-import com.supcoder.hub.dashboard.shiro.UserAuthorizingRealm;
-import com.supcoder.hub.dashboard.shiro.UserSessionManager;
-import org.apache.shiro.mgt.SecurityManager;
+import com.supcoder.hub.dashboard.auth.JwtRealm;
+import com.supcoder.hub.dashboard.filter.JwtTokenFilter;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.realm.Realm;
-import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
+import org.apache.shiro.util.LifecycleUtils;
+import org.apache.shiro.util.ThreadContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Configuration;
 
-import java.util.LinkedHashMap;
+
+import javax.servlet.Filter;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,60 +23,52 @@ import java.util.Map;
  * @author lee
  * @date 2024/12/10
  */
+@Configuration
 public class ShiroConfig {
 
     @Bean
     public Realm realm() {
-        return new UserAuthorizingRealm();
+        return new JwtRealm();
     }
 
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(org.apache.shiro.mgt.SecurityManager securityManager) {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-        filterChainDefinitionMap.put("/api/auth/kaptcha", "anon");
-        filterChainDefinitionMap.put("/api/auth/login", "anon");
-        filterChainDefinitionMap.put("/api/auth/401", "anon");
-        filterChainDefinitionMap.put("/api/auth/index", "anon");
-        filterChainDefinitionMap.put("/api/auth/403", "anon");
-        filterChainDefinitionMap.put("/api/index/*", "anon");
-
-        filterChainDefinitionMap.put("/api/**", "authc");
-        shiroFilterFactoryBean.setLoginUrl("/api/auth/401");
-        shiroFilterFactoryBean.setSuccessUrl("/api/auth/index");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/api/auth/403");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        return shiroFilterFactoryBean;
-    }
-
-    @Bean
-    public SessionManager sessionManager() {
-
-        return new UserSessionManager();
-    }
-
-    @Bean
-    public DefaultWebSecurityManager defaultWebSecurityManager() {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(realm());
-        securityManager.setSessionManager(sessionManager());
+    public DefaultSecurityManager securityManager(Realm realm) {
+        DefaultSecurityManager securityManager = new DefaultSecurityManager();
+        securityManager.setRealm(realm);
+        ThreadContext.bind(securityManager);
+        LifecycleUtils.init(securityManager);
         return securityManager;
     }
 
-    @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor =
-                new AuthorizationAttributeSourceAdvisor();
-        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
-        return authorizationAttributeSourceAdvisor;
-    }
 
     @Bean
-    @DependsOn("lifecycleBeanPostProcessor")
-    public static DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
-        creator.setProxyTargetClass(true);
-        return creator;
+    public ShiroFilterChainDefinition shiroFilterChainDefinition() {
+        DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
+        chainDefinition.addPathDefinition("/api/auth/login", "anon");
+        chainDefinition.addPathDefinition("/api/auth/register", "anon");
+        chainDefinition.addPathDefinition("/api/auth/logout", "authc");
+        chainDefinition.addPathDefinition("/api/auth/refresh-token", "anon");
+        chainDefinition.addPathDefinition("/api/auth/mock-login", "anon");
+        chainDefinition.addPathDefinition("/api/auth/captcha", "anon");
+        chainDefinition.addPathDefinition("/api/auth/account", "authc");
+        chainDefinition.addPathDefinition("/**", "authc");
+        return chainDefinition;
+    }
+
+
+    @Bean
+    public DefaultSessionStorageEvaluator sessionStorageEvaluator() {
+        DefaultSessionStorageEvaluator sessionStorageEvaluator = new DefaultSessionStorageEvaluator();
+        sessionStorageEvaluator.setSessionStorageEnabled(false);
+        return sessionStorageEvaluator;
+    }
+
+
+
+    @Bean
+    public Map<String, Filter> filters() {
+        Map<String, Filter> filters = new HashMap<>();
+        filters.put("authc", new JwtTokenFilter());
+        return filters;
     }
 }

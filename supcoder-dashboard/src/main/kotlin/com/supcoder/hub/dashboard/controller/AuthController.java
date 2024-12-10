@@ -1,12 +1,10 @@
 package com.supcoder.hub.dashboard.controller;
 
 import com.supcoder.hub.core.util.IpUtil;
-import com.supcoder.hub.core.util.JWTUtil;
 import com.supcoder.hub.core.util.JsonResult;
 import com.supcoder.hub.core.util.ResultUtil;
-import com.supcoder.hub.dashboard.model.vo.FakeCaptcha;
-import com.supcoder.hub.dashboard.model.vo.LoginParams;
-import com.supcoder.hub.dashboard.model.vo.LoginResult;
+import com.supcoder.hub.dashboard.auth.JwtUtil;
+import com.supcoder.hub.dashboard.model.vo.*;
 import com.supcoder.hub.db.domain.User;
 import com.supcoder.hub.db.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,10 +36,31 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
+
+
+
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody LoginRequest user) {
-        // user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-        // userService.save(user);
+    public ResponseEntity<?> register(@RequestBody LoginRequest user) {
+        if (user.getUsername() == null || user.getUsername().isEmpty() || user.getPassword() == null || user.getPassword().isEmpty()) {
+            return ResponseEntity.status(400).body("Username and password cannot be empty");
+        }
+
+        // 检查用户名是否已存在
+        if (userService.checkUsername(user.getUsername())) {
+            return ResponseEntity.status(400).body("Username already exists");
+        }
+
+        // 创建新用户
+        User newUser = new User();
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(user.getPassword()); // 注意：这里应该对密码进行加密
+        newUser.setLastLoginIp(IpUtil.getRemoteIp(null)); // 可以根据需要设置默认值
+        newUser.setLastLoginTime(LocalDateTime.now()); // 可以根据需要设置默认值
+        userService.add(newUser);
+
         return ResponseEntity.ok("User registered successfully");
     }
 
@@ -50,6 +69,19 @@ public class AuthController {
         var currentUser = SecurityUtils.getSubject();
         currentUser.logout();
         return ResponseEntity.ok("Logged out successfully");
+    }
+
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenRequest request) {
+        String refreshToken = request.getRefreshToken();
+        if (jwtUtil.validateToken(refreshToken, jwtUtil.extractUsername(refreshToken))) {
+            String username = jwtUtil.extractUsername(refreshToken);
+            String accessToken = jwtUtil.generateAccessToken(username);
+            return ResponseEntity.ok(new AuthResponse(accessToken, refreshToken));
+        } else {
+            return ResponseEntity.badRequest().body("Invalid refresh token");
+        }
     }
 
     /**
@@ -81,12 +113,17 @@ public class AuthController {
         user.setLastLoginTime(LocalDateTime.now());
         userService.updateById(user);
 
+        // 生成 JWT
+        String accessToken = jwtUtil.generateAccessToken(user.getUsername());
+        String refreshToken = jwtUtil.generateRefreshToken(user.getUsername());
+
         Map<String, String> userInfo = new HashMap<>();
         userInfo.put("nickName", user.getUsername());
         userInfo.put("avatar", user.getAvatar());
 
         Map<String, Object> result = new HashMap<>();
-        result.put("token", currentUser.getSession().getId());
+        result.put("accessToken", accessToken);
+        result.put("refreshToken", refreshToken);
         result.put("adminInfo", userInfo);
         return ResponseEntity.ok(ResultUtil.success(result));
     }
@@ -98,7 +135,7 @@ public class AuthController {
      */
     @GetMapping("/mock-login")
     public ResponseEntity<JsonResult<String>> mockLoginRequest() {
-        String token = JWTUtil.INSTANCE.generateToken("supcoder");
+        String token = jwtUtil.generateAccessToken("supcoder");
         JsonResult<String> response = ResultUtil.success(token);
         return ResponseEntity.ok(response);
     }
