@@ -1,7 +1,6 @@
 package com.supcoder.hub.dashboard.interceptor;
 
 
-
 import com.supcoder.hub.core.exception.ErrorCodeEnum;
 import com.supcoder.hub.core.exception.TipException;
 import com.supcoder.hub.core.util.JsonResult;
@@ -9,6 +8,8 @@ import com.supcoder.hub.core.util.ResultUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -49,6 +50,7 @@ import java.io.IOException;
 @RestController
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
 
     /**
      * Tip异常返回(业务逻辑异常)
@@ -211,7 +213,6 @@ public class GlobalExceptionHandler {
         rep.setStatus(ErrorCodeEnum.INTERNAL_SERVER_ERROR.getCode());
         return ResultUtil.error(ErrorCodeEnum.INTERNAL_SERVER_ERROR.getCode(), ex.getMessage());
     }
-
 
 
     @ExceptionHandler(value = Exception.class)

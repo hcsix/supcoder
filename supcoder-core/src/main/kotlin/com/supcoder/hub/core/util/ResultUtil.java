@@ -78,35 +78,35 @@ public class ResultUtil {
 
 
 
-    public static Object badArgument() {
+    public static JsonResult badArgument() {
         return error(401, "参数不对");
     }
 
-    public static Object badArgumentValue() {
+    public static JsonResult badArgumentValue() {
         return error(402, "参数值不对");
     }
 
-    public static Object unLogin() {
-        return error(501, "请登录");
+    public static JsonResult unLogin() {
+        return error(401, "请登录");
     }
 
-    public static Object serious() {
+    public static JsonResult serious() {
         return error(502, "系统内部错误");
     }
 
-    public static Object unSupport() {
+    public static JsonResult unSupport() {
         return error(503, "业务不支持");
     }
 
-    public static Object updatedDateExpired() {
+    public static JsonResult updatedDateExpired() {
         return error(504, "更新数据已经失效");
     }
 
-    public static Object updatedDataFailed() {
+    public static JsonResult updatedDataFailed() {
         return error(505, "更新数据失败");
     }
 
-    public static Object unAuth() {
+    public static JsonResult unAuth() {
         return error(506, "无操作权限");
     }
 

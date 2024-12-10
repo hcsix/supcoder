@@ -81,7 +81,6 @@ public class JwtRealm extends AuthorizingRealm {
         if (!jwtUtil.validateToken(token)) {
             throw new IncorrectCredentialsException("Invalid token");
         }
-
         // 从令牌中提取用户名
         String username = jwtUtil.extractUsername(token);
 

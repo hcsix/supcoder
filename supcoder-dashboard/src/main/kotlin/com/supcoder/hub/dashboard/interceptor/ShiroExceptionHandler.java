@@ -1,4 +1,4 @@
-package com.supcoder.hub.dashboard.config;
+package com.supcoder.hub.dashboard.interceptor;
 
 import com.supcoder.hub.core.util.ResultUtil;
 import org.apache.commons.logging.Log;

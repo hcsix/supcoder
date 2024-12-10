@@ -10,6 +10,7 @@ import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.util.ThreadContext;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,8 +35,8 @@ public class ShiroConfig {
     }
 
     @Bean
-    public DefaultSecurityManager securityManager(Realm realm) {
-        DefaultSecurityManager securityManager = new DefaultSecurityManager();
+    public DefaultWebSecurityManager securityManager(Realm realm) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(realm);
         ThreadContext.bind(securityManager);
         LifecycleUtils.init(securityManager);
