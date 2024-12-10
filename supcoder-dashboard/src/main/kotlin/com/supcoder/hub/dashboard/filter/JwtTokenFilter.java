@@ -1,16 +1,13 @@
 package com.supcoder.hub.dashboard.filter;
 
 import com.supcoder.hub.dashboard.auth.JwtToken;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import java.io.IOException;
 
 /**
  * JwtTokenFilter
@@ -20,14 +17,12 @@ import java.io.IOException;
  */
 public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
 
-    @Override
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authorization = httpRequest.getHeader("Authorization");
         return authorization != null && authorization.startsWith("Bearer ");
     }
 
-    @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authorization = httpRequest.getHeader("Authorization");
@@ -37,7 +32,6 @@ public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
         return true;
     }
 
-    @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         if (isLoginAttempt(request, response)) {
             try {
@@ -49,7 +43,6 @@ public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
         return true;
     }
 
-    @Override
     protected boolean sendChallenge(ServletRequest request, ServletResponse response) {
         response401(request, response);
         return false;
@@ -62,7 +55,6 @@ public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
         httpServletResponse.setCharacterEncoding("UTF-8");
     }
 
-    @Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -72,5 +64,4 @@ public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
         }
         return super.preHandle(request, response);
     }
-
 }

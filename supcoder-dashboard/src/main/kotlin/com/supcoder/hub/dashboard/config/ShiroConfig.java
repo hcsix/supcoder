@@ -2,18 +2,18 @@ package com.supcoder.hub.dashboard.config;
 
 import com.supcoder.hub.dashboard.auth.JwtRealm;
 import com.supcoder.hub.dashboard.filter.JwtTokenFilter;
+import jakarta.servlet.Filter;
+import org.apache.shiro.lang.util.LifecycleUtils;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.realm.Realm;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
-import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
-import org.apache.shiro.util.LifecycleUtils;
 import org.apache.shiro.util.ThreadContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
-import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +25,8 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+
 
     @Bean
     public Realm realm() {
@@ -41,8 +43,11 @@ public class ShiroConfig {
     }
 
 
+
     @Bean
-    public ShiroFilterChainDefinition shiroFilterChainDefinition() {
+    public ShiroFilterFactoryBean shiroFilterChainDefinition(DefaultSecurityManager securityManager) {
+        ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
+        factoryBean.setSecurityManager(securityManager);
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/api/auth/login", "anon");
         chainDefinition.addPathDefinition("/api/auth/register", "anon");
@@ -51,8 +56,11 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/api/auth/captcha", "anon");
         chainDefinition.addPathDefinition("/api/auth/logout", "authc");
         chainDefinition.addPathDefinition("/api/auth/account", "authc");
+        chainDefinition.addPathDefinition("/api/notices", "authc");
         chainDefinition.addPathDefinition("/**", "authc");
-        return chainDefinition;
+        factoryBean.setFilterChainDefinitionMap(chainDefinition.getFilterChainMap());
+        factoryBean.setFilters(filters());
+        return factoryBean;
     }
 
 

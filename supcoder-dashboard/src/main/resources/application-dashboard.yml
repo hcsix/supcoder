@@ -1,5 +1,5 @@
 jwt:
-  secret: 234234234
+  secret: UgAipupLXiMmNhpKj4WlIJgBeWWc/8VIu/0gyTLbRZBeFIUq7hsFHC1QFOCYDLBCRXj30eJCLUA/CdkcmD4J7A==
   access:
     expiration: 3600  # 例如，3600 秒（1小时）
   refresh:
