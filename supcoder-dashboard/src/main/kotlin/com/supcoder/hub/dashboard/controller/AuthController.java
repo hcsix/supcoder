@@ -6,6 +6,7 @@ import com.supcoder.hub.core.util.ResultUtil;
 import com.supcoder.hub.dashboard.auth.JwtUtil;
 import com.supcoder.hub.dashboard.model.vo.*;
 import com.supcoder.hub.db.domain.User;
+import com.supcoder.hub.db.service.AuthService;
 import com.supcoder.hub.db.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
@@ -35,6 +36,9 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthService authService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -97,18 +101,13 @@ public class AuthController {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             return ResponseEntity.status(401).body("Username or password cannot be empty");
         }
-        var currentUser = SecurityUtils.getSubject();
-        try {
-            currentUser.login(new UsernamePasswordToken(username, password));
-        } catch (UnknownAccountException uae) {
+        if (!userService.checkUsername(username)){
             return ResponseEntity.status(401).body("用户帐号或密码不正确");
-        } catch (LockedAccountException lae) {
-            return ResponseEntity.status(401).body("用户帐号已锁定不可用");
-        } catch (AuthenticationException ae) {
+        }
+        User user = authService.authenticate(username, password);
+        if (user == null){
             return ResponseEntity.status(401).body("认证失败");
         }
-        currentUser = SecurityUtils.getSubject();
-        User user = (User) currentUser.getPrincipal();
         user.setLastLoginIp(IpUtil.getRemoteIp(request));
         user.setLastLoginTime(LocalDateTime.now());
         userService.updateById(user);

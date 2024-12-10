@@ -46,10 +46,10 @@ public class ShiroConfig {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/api/auth/login", "anon");
         chainDefinition.addPathDefinition("/api/auth/register", "anon");
-        chainDefinition.addPathDefinition("/api/auth/logout", "authc");
         chainDefinition.addPathDefinition("/api/auth/refresh-token", "anon");
         chainDefinition.addPathDefinition("/api/auth/mock-login", "anon");
         chainDefinition.addPathDefinition("/api/auth/captcha", "anon");
+        chainDefinition.addPathDefinition("/api/auth/logout", "authc");
         chainDefinition.addPathDefinition("/api/auth/account", "authc");
         chainDefinition.addPathDefinition("/**", "authc");
         return chainDefinition;
