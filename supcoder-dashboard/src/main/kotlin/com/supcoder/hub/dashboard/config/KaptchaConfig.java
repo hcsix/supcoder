@@ -1,24 +1,19 @@
-package com.supcoder.hub.dashboard.config
+package com.supcoder.hub.dashboard.config;
 
-import com.google.code.kaptcha.Producer
-import com.google.code.kaptcha.impl.DefaultKaptcha
-import com.google.code.kaptcha.util.Config
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import java.util.Properties
+import com.google.code.kaptcha.Producer;
+import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.google.code.kaptcha.util.Config;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-/**
- * KaptchaConfig
- *
- * @author lee
- * @date 2024/12/9
- */
+import java.util.Properties;
+
 @Configuration
-open class KaptchaConfig {
+public class KaptchaConfig {
 
     @Bean
-    open fun kaptchaProducer(): Producer {
-        val properties = Properties()
+    public Producer kaptchaProducer() {
+        Properties properties = new Properties();
         properties.setProperty("kaptcha.image.width", "100");
         properties.setProperty("kaptcha.image.height", "40");
         properties.setProperty("kaptcha.textproducer.font.size", "32");
@@ -27,9 +22,10 @@ open class KaptchaConfig {
         properties.setProperty("kaptcha.textproducer.char.length", "4");
         properties.setProperty("kaptcha.noise.impl", "com.google.code.kaptcha.impl.NoNoise");
 
-        val kaptcha = DefaultKaptcha();
-        val config = Config(properties);
+        DefaultKaptcha kaptcha = new DefaultKaptcha();
+        Config config = new Config(properties);
         kaptcha.setConfig(config);
         return kaptcha;
     }
+
 }

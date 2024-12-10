@@ -13,9 +13,7 @@ data class FakeCaptcha(
 )
 data class LoginParams(
     val username: String,
-    val password: String,
-    val autoLogin: Boolean,
-    val type: String
+    val password: String
 )
 
 data class LoginResult(

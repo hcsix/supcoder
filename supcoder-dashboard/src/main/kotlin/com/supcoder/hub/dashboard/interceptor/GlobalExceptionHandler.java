@@ -167,6 +167,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler({HttpMessageNotReadableException.class, TypeMismatchException.class, MissingServletRequestParameterException.class})
     public JsonResult request400(HttpServletResponse rep, Exception ex) {
+        log.error("---HttpMessageNotReadableException Handler---  ERROR: {}", ex.getMessage());
+        ex.printStackTrace();
         rep.setStatus(ErrorCodeEnum.BAD_REQUEST.getCode());
         return ResultUtil.error(ErrorCodeEnum.BAD_REQUEST.getCode(), ex.getMessage());
     }

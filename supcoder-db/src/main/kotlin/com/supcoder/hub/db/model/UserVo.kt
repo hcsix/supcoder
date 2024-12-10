@@ -18,9 +18,5 @@ package com.supcoder.hub.db.model
     val group: String? = null,
     val notifyCount: Int? = null,
     val unreadCount: Int? = null,
-    val country: String? = null,
-    val level: String? = null,
-    val address: String? = null,
-    val phone: String? = null
 )
 
