@@ -3,9 +3,9 @@ package com.supcoder.hub.db.service;
 import com.supcoder.hub.db.dao.PermissionMapper;
 import com.supcoder.hub.db.domain.Permission;
 import com.supcoder.hub.db.domain.PermissionExample;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;

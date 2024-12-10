@@ -43,7 +43,7 @@ open class ShiroConfig {
         shiroFilterFactoryBean.successUrl = "/admin/auth/index";
         shiroFilterFactoryBean.unauthorizedUrl = "/admin/auth/403";
         shiroFilterFactoryBean.filterChainDefinitionMap = filterChainDefinitionMap;
-        return shiroFilterFactoryBean;
+        return shiroFilterFactoryBean
     }
 
     @Bean
@@ -67,7 +67,7 @@ open class ShiroConfig {
     }
 
     @Bean
-    @DependsOn("lifecycleBeanPostProcessor")
+//    @DependsOn("lifecycleBeanPostProcessor")
     open fun defaultAdvisorAutoProxyCreator(): DefaultAdvisorAutoProxyCreator {
         val creator = DefaultAdvisorAutoProxyCreator();
         creator.isProxyTargetClass = true;

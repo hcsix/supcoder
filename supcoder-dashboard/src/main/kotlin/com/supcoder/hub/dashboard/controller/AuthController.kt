@@ -29,7 +29,7 @@ import java.time.LocalDateTime
 @RestController
 @RequestMapping("/api/auth")
 @Validated
-class AuthController {
+open class AuthController {
     @Autowired
     private lateinit var userService: UserService
 

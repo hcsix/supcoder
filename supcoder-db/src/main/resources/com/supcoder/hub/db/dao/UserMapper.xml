@@ -19,7 +19,7 @@
     <result column="unread_count" jdbcType="INTEGER" property="unreadCount" />
     <result column="country" jdbcType="VARCHAR" property="country" />
     <result column="level" jdbcType="VARCHAR" property="level" />
-    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" typeHandler="org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler" />
+    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" typeHandler="com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
@@ -62,15 +62,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -114,15 +114,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -272,7 +272,7 @@
       #{name,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{group,jdbcType=VARCHAR}, #{notifyCount,jdbcType=INTEGER}, 
       #{unreadCount,jdbcType=INTEGER}, #{country,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
-      #{roleIds,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler}, 
+      #{roleIds,jdbcType=VARCHAR,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler}, 
       #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, 
       #{deleted,jdbcType=BIT})
@@ -386,7 +386,7 @@
         #{level,jdbcType=VARCHAR},
       </if>
       <if test="roleIds != null">
-        #{roleIds,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler},
+        #{roleIds,jdbcType=VARCHAR,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler},
       </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
@@ -468,7 +468,7 @@
         `level` = #{record.level,jdbcType=VARCHAR},
       </if>
       <if test="record.roleIds != null">
-        role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler},
+        role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler},
       </if>
       <if test="record.address != null">
         address = #{record.address,jdbcType=VARCHAR},
@@ -515,7 +515,7 @@
       unread_count = #{record.unreadCount,jdbcType=INTEGER},
       country = #{record.country,jdbcType=VARCHAR},
       `level` = #{record.level,jdbcType=VARCHAR},
-      role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler},
+      role_ids = #{record.roleIds,jdbcType=VARCHAR,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler},
       address = #{record.address,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -571,7 +571,7 @@
         `level` = #{level,jdbcType=VARCHAR},
       </if>
       <if test="roleIds != null">
-        role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler},
+        role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler},
       </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
@@ -615,7 +615,7 @@
       unread_count = #{unreadCount,jdbcType=INTEGER},
       country = #{country,jdbcType=VARCHAR},
       `level` = #{level,jdbcType=VARCHAR},
-      role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler},
+      role_ids = #{roleIds,jdbcType=VARCHAR,typeHandler=com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler},
       address = #{address,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP},

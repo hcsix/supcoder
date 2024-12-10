@@ -1,8 +1,10 @@
 package com.supcoder.hub.dashboard.controller
 
+import com.supcoder.hub.dashboard.annotation.RequiresPermissionsDesc
 import com.supcoder.hub.dashboard.model.vo.NoticeIconItem
 import com.supcoder.hub.dashboard.model.vo.NoticeIconItemType
 import com.supcoder.hub.dashboard.model.vo.NoticeIconList
+import org.apache.shiro.authz.annotation.RequiresPermissions
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -17,8 +19,11 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/notice")
-class NoticeController {
+open class NoticeController {
 
+
+    @RequiresPermissions("admin:address:list")
+    @RequiresPermissionsDesc(menu = ["系统管理", "通知管理"], button = ["查询"])
     @GetMapping("/notices")
     fun getNotices(): ResponseEntity<NoticeIconList> {
         // 实现获取通知的逻辑

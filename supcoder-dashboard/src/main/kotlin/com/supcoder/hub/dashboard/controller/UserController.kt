@@ -16,7 +16,7 @@ import com.supcoder.hub.db.domain.User
 
 @RestController
 @RequestMapping("/api/users")
-class UserController {
+open class UserController {
 
     @Autowired
     private lateinit var userService: UserService

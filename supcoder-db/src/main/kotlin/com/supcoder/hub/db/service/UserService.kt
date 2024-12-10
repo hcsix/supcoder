@@ -1,17 +1,17 @@
 package com.supcoder.hub.db.service
 
-import com.alibaba.druid.util.StringUtils
 import com.github.pagehelper.PageHelper
 import com.supcoder.hub.db.dao.UserMapper
 import com.supcoder.hub.db.domain.User
 import com.supcoder.hub.db.domain.UserExample
 import com.supcoder.hub.db.model.UserVo
+import jakarta.annotation.Resource
 import org.springframework.stereotype.Service
+import org.springframework.util.StringUtils
 import java.time.LocalDateTime
-import javax.annotation.Resource
 
 @Service
-class UserService {
+open class UserService {
 
     @Resource
     private lateinit var userMapper: UserMapper

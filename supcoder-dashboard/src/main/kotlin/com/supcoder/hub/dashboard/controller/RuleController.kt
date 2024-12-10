@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping("/api/rule")
-class RuleController {
+open class RuleController {
 
     @GetMapping("/rule")
     fun getRules(@RequestParam current: Int, @RequestParam pageSize: Int): ResponseEntity<RuleList> {

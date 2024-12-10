@@ -243,7 +243,7 @@ public class UserExample {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            roleIdsCriteria.add(new Criterion(condition, value, "org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler"));
+            roleIdsCriteria.add(new Criterion(condition, value, "com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler"));
             allCriteria = null;
         }
 
@@ -251,7 +251,7 @@ public class UserExample {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            roleIdsCriteria.add(new Criterion(condition, value1, value2, "org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler"));
+            roleIdsCriteria.add(new Criterion(condition, value1, value2, "com.supcoder.hub.db.mybatis.JsonIntegerArrayTypeHandler"));
             allCriteria = null;
         }
 

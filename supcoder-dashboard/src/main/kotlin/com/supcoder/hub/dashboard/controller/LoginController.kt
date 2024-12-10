@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/login")
-class LoginController {
+open class LoginController {
 
     @PostMapping("/captcha")
     fun getFakeCaptcha(@RequestParam phone: String): ResponseEntity<FakeCaptcha> {
