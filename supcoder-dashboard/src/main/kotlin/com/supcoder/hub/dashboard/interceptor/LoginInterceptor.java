@@ -1,4 +1,4 @@
-package com.supcoder.hub.core.interceptor;//package com.supcoder.wiki.interceptor;
+package com.supcoder.hub.dashboard.interceptor;//package com.supcoder.wiki.interceptor;
 //
 //import com.alibaba.fastjson.JSON;
 //import com.jiawa.wiki.resp.UserLoginResp;

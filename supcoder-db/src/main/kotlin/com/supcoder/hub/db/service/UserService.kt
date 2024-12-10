@@ -17,11 +17,11 @@ open class UserService {
     private lateinit var userMapper: UserMapper
 
 
-    fun findById(userId: Long): User {
+    open fun findById(userId: Long): User {
         return userMapper.selectByPrimaryKey(userId);
     }
 
-    fun findUserVoById(userId: Long): UserVo {
+    open fun findUserVoById(userId: Long): UserVo {
         val user = findById(userId)
         return UserVo(
             id = user.id,
@@ -38,47 +38,47 @@ open class UserService {
         )
     }
 
-    fun queryByUsername(username: String): User? {
+    open fun queryByUsername(username: String): User? {
         val userExample = UserExample()
         userExample.or().andUsernameEqualTo(username)
         return userMapper.selectOneByExample(userExample)
     }
 
-    fun add(user: User) {
+    open fun add(user: User) {
         val now = LocalDateTime.now()
         user.addTime = now
         user.updateTime = now
         userMapper.insertSelective(user)
     }
 
-    fun updateById(user: User) {
+    open fun updateById(user: User) {
         user.updateTime = LocalDateTime.now()
         userMapper.updateByPrimaryKeySelective(user)
     }
 
-    fun count(): Long {
+    open fun count(): Long {
         val userExample = UserExample()
         userExample.or().andDeletedEqualTo(false)
         return userMapper.countByExample(userExample)
     }
 
-    fun deleteById(userId: Long) {
+    open fun deleteById(userId: Long) {
         userMapper.logicalDeleteByPrimaryKey(userId)
     }
 
-    fun checkUsername(username: String): Boolean {
+    open fun checkUsername(username: String): Boolean {
         val userExample = UserExample()
         userExample.or().andUsernameEqualTo(username)
         return userMapper.countByExample(userExample).toInt() != 0
     }
 
-    fun queryListByUsername(username: String): List<User> {
+    open fun queryListByUsername(username: String): List<User> {
         val userExample = UserExample()
         userExample.or().andUsernameEqualTo(username)
         return userMapper.selectByExample(userExample)
     }
 
-    fun querySelective(
+    open fun querySelective(
         username: String?,
         page: Int,
         size: Int,

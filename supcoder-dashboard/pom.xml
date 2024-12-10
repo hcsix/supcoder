@@ -10,11 +10,7 @@
         <version>0.0.1</version>
     </parent>
 
-
-
-
     <dependencies>
-
         <dependency>
             <groupId>com.supcoder</groupId>
             <artifactId>supcoder-core</artifactId>
@@ -44,6 +40,12 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.9.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

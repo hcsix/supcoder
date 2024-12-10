@@ -1,4 +1,4 @@
-package com.supcoder.hub.core.filter;
+package com.supcoder.hub.dashboard.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

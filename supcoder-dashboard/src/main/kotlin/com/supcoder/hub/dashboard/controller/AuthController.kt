@@ -12,7 +12,6 @@ import org.apache.shiro.authc.AuthenticationException
 import org.apache.shiro.authc.LockedAccountException
 import org.apache.shiro.authc.UnknownAccountException
 import org.apache.shiro.authc.UsernamePasswordToken
-import org.apache.tomcat.util.http.ResponseUtil
 import org.mindrot.jbcrypt.BCrypt
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity

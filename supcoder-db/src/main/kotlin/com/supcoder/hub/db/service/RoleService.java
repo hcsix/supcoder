@@ -16,9 +16,9 @@ import java.util.Set;
 
 @Service
 public class RoleService {
+
     @Resource
     private RoleMapper roleMapper;
-
 
     public Set<String> queryByIds(Integer[] roleIds) {
         Set<String> roles = new HashSet<String>();

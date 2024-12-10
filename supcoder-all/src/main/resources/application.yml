@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: db, core, admin, wx
+    active: db, core, dashboard
   messages:
     encoding: UTF-8
   servlet:
@@ -17,6 +17,18 @@ server:
 
 logging:
   config: classpath:logback-spring.xml
+  level:
+    root: DEBUG
+    org.springframework: DEBUG
+    org.mybatis: DEBUG
+    org.apache.catalina: DEBUG
+    com.supcoder.hub.dashboard: DEBUG
+    com.supcoder.hub.db: DEBUG
+    com.supcoder.hub.core: DEBUG
+    com.supcoder.hub: DEBUG
 
-swagger:
-  production: false
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

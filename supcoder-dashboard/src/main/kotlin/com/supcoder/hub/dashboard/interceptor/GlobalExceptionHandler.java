@@ -1,7 +1,9 @@
-package com.supcoder.hub.core.exception;
+package com.supcoder.hub.dashboard.interceptor;
 
 
 
+import com.supcoder.hub.core.exception.ErrorCodeEnum;
+import com.supcoder.hub.core.exception.TipException;
 import com.supcoder.hub.core.util.JsonResult;
 import com.supcoder.hub.core.util.ResultUtil;
 import jakarta.servlet.http.HttpServletRequest;

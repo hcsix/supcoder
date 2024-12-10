@@ -5,18 +5,22 @@ spring:
     encoding: UTF-8
 
 server:
-  port: 8083
-
-logging:
-  level:
-    root:  ERROR
-    org.springframework:  ERROR
-    org.mybatis:  ERROR
-    com.supcoder.hub.dashboard:  DEBUG
-    com.supcoder.hub:  ERROR
+  port: 8080
 
 springdoc:
   api-docs:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  DEBUG
+    org.mybatis:  DEBUG
+    org.apache.catalina:  DEBUG
+    com.supcoder.hub.dashboard:  DEBUG
+    com.supcoder.hub:  ERROR
+
+

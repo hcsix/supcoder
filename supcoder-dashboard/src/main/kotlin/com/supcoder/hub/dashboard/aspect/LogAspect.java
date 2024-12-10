@@ -1,4 +1,4 @@
-package com.supcoder.hub.core.aspect;
+package com.supcoder.hub.dashboard.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
@@ -32,7 +32,7 @@ public class LogAspect {
     private final static Logger LOG = LoggerFactory.getLogger(LogAspect.class);
 
     /** 定义一个切点 */
-    @Pointcut("execution(public * com.supcoder.*.controller..*Controller.*(..))")
+    @Pointcut("execution(public * com.supcoder.hub.*.controller..*Controller.*(..))")
     public void controllerPointcut() {}
 
     @Resource

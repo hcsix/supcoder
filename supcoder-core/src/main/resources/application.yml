@@ -6,7 +6,7 @@ spring:
 
 logging:
   level:
-    root:  ERROR
-    org.springframework:  ERROR
-    org.mybatis:  ERROR
+    root:  DEBUG
+    org.springframework:  DEBUG
+    org.mybatis:  DEBUG
     com.supcoder.hub.core:  DEBUG
