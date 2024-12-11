@@ -9,9 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.validation.BindException;
@@ -49,6 +54,7 @@ import java.io.IOException;
 @Slf4j
 @RestController
 @ControllerAdvice
+@Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class GlobalExceptionHandler {
 
 
@@ -60,8 +66,20 @@ public class GlobalExceptionHandler {
      * @return {@link JsonResult}
      */
     @ExceptionHandler(value = TipException.class)
-    public JsonResult tipErrorHandler(HttpServletRequest req, Exception e) {
+    public JsonResult tipErrorHandler(HttpServletRequest req, HttpServletResponse rep,Exception e) {
+        log.error("---tipErrorHandler Handler---Host {}, invokes url {},  ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
+        e.printStackTrace();
+        rep.setStatus(HttpStatus.OK.value());
         return ResultUtil.error(e.getMessage());
+    }
+
+
+    @ExceptionHandler(value = AuthenticationException.class)
+    public JsonResult authErrorHandler(HttpServletRequest req, HttpServletResponse rep, AuthenticationException e) {
+        log.error("---AuthenticationException Handler---Host {}, invokes url {},  ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
+        e.printStackTrace();
+        rep.setStatus(HttpStatus.OK.value());
+        return ResultUtil.error(HttpStatus.UNAUTHORIZED.value(),e.getMessage());
     }
 
     /**
@@ -249,6 +267,14 @@ public class GlobalExceptionHandler {
     public JsonResult<?> handler(IllegalArgumentException e) {
         log.error(e.getMessage(), e);
         return ResultUtil.error(ErrorCodeEnum.PARAM_VALID_ERROR.getCode(), e.getMessage());
+    }
+
+    @ExceptionHandler(IncorrectCredentialsException.class)
+    public JsonResult incorrectCredentialsExceptionHandler(HttpServletRequest req, HttpServletResponse rep, IncorrectCredentialsException e) {
+        log.error("---IncorrectCredentialsException Handler---Host {}, invokes url {},  ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
+        e.printStackTrace();
+        rep.setStatus(HttpStatus.UNAUTHORIZED.value());
+        return ResultUtil.error(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
     }
 
 

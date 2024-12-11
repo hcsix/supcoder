@@ -13,6 +13,9 @@ import org.apache.shiro.util.ThreadContext;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 
 
 import java.util.HashMap;
@@ -25,9 +28,8 @@ import java.util.Map;
  * @date 2024/12/10
  */
 @Configuration
+@Order(value = Ordered.HIGHEST_PRECEDENCE+2)
 public class ShiroConfig {
-
-
 
     @Bean
     public Realm realm() {
@@ -42,8 +44,6 @@ public class ShiroConfig {
         LifecycleUtils.init(securityManager);
         return securityManager;
     }
-
-
 
     @Bean
     public ShiroFilterFactoryBean shiroFilterChainDefinition(DefaultSecurityManager securityManager) {
@@ -71,8 +71,6 @@ public class ShiroConfig {
         sessionStorageEvaluator.setSessionStorageEnabled(false);
         return sessionStorageEvaluator;
     }
-
-
 
     @Bean
     public Map<String, Filter> filters() {

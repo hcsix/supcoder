@@ -1,10 +1,11 @@
 package com.supcoder.hub.dashboard.auth;
 
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.supcoder.hub.core.exception.TipException;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -46,21 +47,47 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + refreshExpiration* 1000))
+                .setExpiration(new Date(System.currentTimeMillis() + refreshExpiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 
-    public Claims extractClaims(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+    public Claims extractClaims(String token) throws TipException {
+        try {
+            return Jwts.parser()
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+            // 处理过期的令牌
+            throw new TipException(HttpStatus.UNAUTHORIZED.value(), "Token has expired");
+        } catch (SignatureException e) {
+            // 处理签名不匹配的情况
+            throw new TipException(HttpStatus.UNAUTHORIZED.value(), "Invalid token signature");
+        } catch (MalformedJwtException e) {
+            // 处理格式错误的令牌
+            throw new TipException(HttpStatus.UNAUTHORIZED.value(), "Invalid token format");
+        }
     }
 
     public String extractUsername(String token) {
-        return extractClaims(token).getSubject();
+        try {
+            return extractClaims(token).getSubject();
+        } catch (Exception exception) {
+            return "";
+        }
     }
 
     public boolean isTokenExpired(String token) {
-        return extractClaims(token).getExpiration().before(new Date());
+        if (token == null) {
+            return true;
+        }
+        try {
+            return extractClaims(token).getExpiration().before(new Date());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
     }
 
     public boolean validateToken(String token, String username) {
@@ -69,8 +96,16 @@ public class JwtUtil {
     }
 
     public boolean validateToken(String token) {
-        final String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(extractUsername(token)) && !isTokenExpired(token));
+        if (token == null) {
+            return false;
+        }
+        try {
+            final String extractedUsername = extractUsername(token);
+            return (extractedUsername.equals(extractUsername(token)) && !isTokenExpired(token));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 

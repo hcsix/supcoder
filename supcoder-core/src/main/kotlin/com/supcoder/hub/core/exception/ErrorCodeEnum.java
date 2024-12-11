@@ -13,27 +13,27 @@ public enum ErrorCodeEnum {
     /**
      * 运行时异常
      */
-    RUNTIME(1000, "RuntimeException"),
+    RUNTIME(500, "RuntimeException"),
     /**
      * 空指针异常
      */
-    NULL_POINTER(1001, "NullPointerException "),
+    NULL_POINTER(501, "NullPointerException "),
     /**
      * 类型住转换异常
      */
-    CLASS_CAST(1002, "ClassCastException"),
+    CLASS_CAST(502, "ClassCastException"),
     /**
      * IO异常
      */
-    IO(1003, "IOException"),
+    IO(503, "IOException"),
     /**
      * 找不到方法异常
      */
-    NO_SUCH_METHOD(1004, "NoSuchMethodException"),
+    NO_SUCH_METHOD(504, "NoSuchMethodException"),
     /**
      * 数组越界异常
      */
-    INDEX_OUTOF_BOUNDS(1005, "IndexOutOfBoundsException"),
+    INDEX_OUTOF_BOUNDS(505, "IndexOutOfBoundsException"),
     /**
      * 400异常
      */
@@ -61,7 +61,7 @@ public enum ErrorCodeEnum {
     /**
      * 用户未登陆
      */
-    NOT_LOGIN(999, "Not Login");
+    NOT_LOGIN(401, "Not Login");
 
 
 

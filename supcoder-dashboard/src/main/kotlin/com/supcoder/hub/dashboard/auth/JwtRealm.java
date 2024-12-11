@@ -91,7 +91,6 @@ public class JwtRealm extends AuthorizingRealm {
         if (username == null) {
             throw new UnknownAccountException("Username not found in token");
         }
-
         // 返回认证信息，包括用户名、令牌和当前认证器的名称
         return new SimpleAuthenticationInfo(username, token, getName());
     }
