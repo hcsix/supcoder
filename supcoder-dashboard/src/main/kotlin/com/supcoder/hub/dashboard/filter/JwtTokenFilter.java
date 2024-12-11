@@ -1,7 +1,9 @@
 
 package com.supcoder.hub.dashboard.filter;
 
+import com.alibaba.fastjson.JSON;
 import com.supcoder.hub.core.exception.TipException;
+import com.supcoder.hub.core.util.ResultUtil;
 import com.supcoder.hub.core.validator.Order;
 import com.supcoder.hub.dashboard.auth.JwtToken;
 import jakarta.servlet.ServletRequest;
@@ -18,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 
 /**
@@ -29,20 +33,27 @@ import java.io.IOException;
 @Slf4j
 public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
 
+
+    private static final String HEADER_TOKEN = "Authorization";
+
     @Override
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String authorization = httpRequest.getHeader("Authorization");
-        return authorization != null && authorization.startsWith("Bearer ");
+        String authorization = httpRequest.getHeader(HEADER_TOKEN);
+        return authorization != null;
     }
 
     @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String authorization = httpRequest.getHeader("Authorization");
-        String token = authorization.substring(7); // 去掉 "Bearer " 前缀
-        JwtToken jwtToken = new JwtToken(token);
-        getSubject(request, response).login(jwtToken);
+        String authorization = httpRequest.getHeader(HEADER_TOKEN);
+        JwtToken jwtToken = new JwtToken(authorization);
+        try {
+            getSubject(request, response).login(jwtToken);
+        } catch (AuthenticationException e) {
+            responseError(response, HttpStatus.UNAUTHORIZED.value(),e.getMessage());
+            return false;
+        }
         return true;
     }
 
@@ -51,77 +62,44 @@ public class JwtTokenFilter extends BasicHttpAuthenticationFilter {
         if (isLoginAttempt(request, response)) {
             try {
                 executeLogin(request, response);
-            } catch (UnknownAccountException e) {
-                log.error("UnknownAccountException caught: {}", e.getMessage(), e);
-                response401(request, response, e.getMessage());
-                return false;
-            } catch (AccountException e) {
-                log.error("AccountException caught: {}", e.getMessage(), e);
-                response401(request, response, e.getMessage());
-                return false;
-            } catch (IncorrectCredentialsException e) {
-                log.error("IncorrectCredentialsException caught: {}", e.getMessage(), e);
-                response401(request, response, e.getMessage());
-                return false;
-            } catch (TipException e) {
-                log.error("TipException caught: {}", e.getMessage(), e);
-                throw e;
+                return true;
             } catch (Exception e) {
-                log.error("General exception caught: {}", e.getMessage(), e);
-                response401(request, response, e.getMessage());
-                return false;
+                log.error("执行response.getWriter()方法异常");
             }
-        } else {
-            response401(request, response, "Unauthorized");
         }
+        this.sendChallenge(request, response);
         return false;
     }
 
-    @Override
-    protected boolean sendChallenge(ServletRequest request, ServletResponse response) {
-        response401(request, response);
-        return false;
+
+    /**
+     * 向客户端响应错误信息
+     *
+     * 当请求处理过程中发生错误时，调用此方法将错误信息编码并重定向到错误页面
+     *
+     * @param resp ServletResponse对象，用于响应客户端请求
+     * @param code 错误代码，用于标识不同的错误类型
+     * @param errorMessage 错误消息，描述错误的详细信息
+     * @throws IOException 当响应过程中发生I/O错误时抛出此异常
+     */
+    private void responseError(ServletResponse resp, int code, String errorMessage) throws IOException{
+        try {
+            // 将ServletResponse转换为HttpServletResponse，以便支持HTTP特定的操作
+            HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
+            // 对错误消息进行URL编码，以确保消息在URL中的安全传输
+            errorMessage = URLEncoder.encode(errorMessage, StandardCharsets.UTF_8);
+            // 重定向到错误页面，携带错误代码和编码后的错误消息作为URL参数
+            httpServletResponse.sendRedirect("/filterError/"+code+"/"+errorMessage);
+        } catch (Exception e) {
+            // 记录错误日志，便于问题追踪和定位
+            log.error(e.getMessage());
+        }
     }
+
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        String authorization = httpRequest.getHeader("Authorization");
-        String token = authorization.substring(7); // 去掉 "Bearer " 前缀
-        if (token != null) {
-            try {
-                getSubject(request, response).login(new JwtToken(token));
-                return true;
-            } catch (AuthenticationException e) {
-                // 重新抛出异常，确保全局异常处理器能够捕获
-                throw e;
-            }
-        }
-        httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
         return false;
-    }
-
-
-    private void response401(ServletRequest req, ServletResponse resp) {
-        HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
-        httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
-        httpServletResponse.setContentType("application/json");
-        httpServletResponse.setCharacterEncoding("UTF-8");
-    }
-
-
-    private void response401(ServletRequest req, ServletResponse resp, String errorMessage) {
-        HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
-        httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
-        httpServletResponse.setContentType("application/json");
-        httpServletResponse.setCharacterEncoding("UTF-8");
-        try {
-            String jsonResponse = "{\"error\": \"" + errorMessage + "\"}";
-            httpServletResponse.getWriter().write(jsonResponse);
-        } catch (IOException e) {
-            log.error("Failed to write response: {}", e.getMessage(), e);
-        }
     }
 
     @Override

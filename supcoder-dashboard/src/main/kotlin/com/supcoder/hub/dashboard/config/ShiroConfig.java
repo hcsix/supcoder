@@ -50,6 +50,7 @@ public class ShiroConfig {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(securityManager);
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
+        chainDefinition.addPathDefinition("/filterError/*/*", "anon");
         chainDefinition.addPathDefinition("/api/auth/login", "anon");
         chainDefinition.addPathDefinition("/api/auth/register", "anon");
         chainDefinition.addPathDefinition("/api/auth/refresh-token", "anon");
