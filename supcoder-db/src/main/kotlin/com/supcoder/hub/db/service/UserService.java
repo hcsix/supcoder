@@ -68,6 +68,13 @@ public class UserService {
         userMapper.logicalDeleteByPrimaryKey(userId);
     }
 
+    public void deleteByUserName(String userName) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(userName);
+        userMapper.logicalDeleteByExample(userExample);
+    }
+
+
     public boolean checkUsername(String username) {
         UserExample userExample = new UserExample();
         userExample.createCriteria().andUsernameEqualTo(username);
@@ -99,4 +106,7 @@ public class UserService {
         PageHelper.startPage(page, size);
         return userMapper.selectByExample(userExample);
     }
+
+
+
 }
