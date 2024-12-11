@@ -1,6 +1,5 @@
-package com.supcoder.hub.dashboard.model.dto.response;
+package com.supcoder.hub.db.model;
 
-import java.util.List;
 
 /**
  * LotteryResult
@@ -8,10 +7,16 @@ import java.util.List;
  * @author lee
  * @date 2024/12/11
  */
-public class LotteryResult {
+public class LotteryVo {
     private String lotteryType;
     private String issueNumber;
-    private List<String> winningNumbers;
+    private String result;
+
+    public LotteryVo(String lotteryType, String issueNumber, String result) {
+        this.lotteryType = lotteryType;
+        this.issueNumber = issueNumber;
+        this.result = result;
+    }
 
     // Getters and Setters
     public String getLotteryType() {
@@ -30,11 +35,12 @@ public class LotteryResult {
         this.issueNumber = issueNumber;
     }
 
-    public List<String> getWinningNumbers() {
-        return winningNumbers;
+
+    public String getResult() {
+        return result;
     }
 
-    public void setWinningNumbers(List<String> winningNumbers) {
-        this.winningNumbers = winningNumbers;
+    public void setResult(String result) {
+        this.result = result;
     }
 }
