@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/**
+ * FilterErrorController
+ * 重定向错误接口
+ */
 @RestController
 public class FilterErrorController {
 

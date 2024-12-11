@@ -37,6 +37,21 @@ public class AuthService {
         return null;
     }
 
+
+    public void changePassword(String username, String oldPassword, String newPassword) {
+        User user = userService.queryByUsername(username);
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+//        if (!BCrypt.checkpw(oldPassword, user.getPassword())) {
+        if (!oldPassword.equals(user.getPassword())) {
+            throw new RuntimeException("Old password does not match");
+        }
+//        user.setPassword(hashPassword(newPassword));
+        user.setPassword(newPassword);
+        userService.updateById(user);
+    }
+
     /**
      * 使用 bcrypt 加密密码
      *

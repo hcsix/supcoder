@@ -4,6 +4,7 @@ import com.supcoder.hub.core.util.IpUtil;
 import com.supcoder.hub.core.util.JsonResult;
 import com.supcoder.hub.core.util.ResultUtil;
 import com.supcoder.hub.dashboard.auth.JwtUtil;
+import com.supcoder.hub.dashboard.model.dto.request.ChangePasswordRequest;
 import com.supcoder.hub.dashboard.model.dto.request.LoginRequest;
 import com.supcoder.hub.dashboard.model.dto.request.LogoutRequest;
 import com.supcoder.hub.dashboard.model.dto.request.RefreshTokenRequest;
@@ -77,7 +78,6 @@ public class AuthController {
     }
 
 
-
     /**
      * 登录接口
      *
@@ -138,7 +138,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("/refresh-token")
+    @PostMapping("/refreshToken")
     public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenRequest request) {
         String refreshToken = request.getRefreshToken();
         if (jwtUtil.validateToken(refreshToken)) {
@@ -151,11 +151,31 @@ public class AuthController {
     }
 
 
-    @PostMapping("/account")
-    public ResponseEntity<JsonResult<String>> login(@RequestBody LoginParams loginParams) {
-        return ResponseEntity.ok(ResultUtil.success("12212"));
+    /**
+     * 修改密码
+     *
+     * @param request       包含旧密码和新密码的请求体
+     * @param authorization 用户的认证信息
+     * @return 修改密码的结果
+     */
+    @PostMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordRequest request, @RequestHeader(value = "Authorization", required = false) String authorization) {
+        if (authorization == null) {
+            return ResponseEntity.badRequest().body("Authorization header is missing");
+        }
+        String username = jwtUtil.extractUsername(authorization);
+        if (username == null) {
+            return ResponseEntity.badRequest().body("Invalid authorization token");
+        }
+        String oldPassword = request.getOldPassword();
+        String newPassword = request.getNewPassword();
+        try {
+            authService.changePassword(username, oldPassword, newPassword);
+            return ResponseEntity.ok(ResultUtil.success("Password changed successfully"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
-
 
 }
 

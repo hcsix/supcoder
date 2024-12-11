@@ -50,14 +50,13 @@ public class ShiroConfig {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(securityManager);
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
+        // 重定向错误接口，无需鉴权
         chainDefinition.addPathDefinition("/filterError/*/*", "anon");
         chainDefinition.addPathDefinition("/api/auth/login", "anon");
         chainDefinition.addPathDefinition("/api/auth/register", "anon");
-        chainDefinition.addPathDefinition("/api/auth/refresh-token", "anon");
-        chainDefinition.addPathDefinition("/api/auth/mock-login", "anon");
-        chainDefinition.addPathDefinition("/api/auth/captcha", "anon");
+        chainDefinition.addPathDefinition("/api/auth/refreshToken", "authc");
         chainDefinition.addPathDefinition("/api/auth/logout", "authc");
-        chainDefinition.addPathDefinition("/api/auth/account", "authc");
+        chainDefinition.addPathDefinition("/api/auth/changePassword", "authc");
         chainDefinition.addPathDefinition("/api/notices", "authc");
         chainDefinition.addPathDefinition("/**", "authc");
         factoryBean.setFilterChainDefinitionMap(chainDefinition.getFilterChainMap());
