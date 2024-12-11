@@ -71,5 +71,18 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
+        <!--彩票类型表-->
+        <table tableName="lottery_type">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <!--大乐透开奖结果表-->
+        <table tableName="lottery_daletou">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <!--双色球开奖结果表-->
+        <table tableName="lottery_shuangseqiu">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

@@ -83,3 +83,21 @@ VALUES (1, 1, '*', '2019-01-01 00:00:00', '2019-01-01 00:00:00', 0),
        (30, 3, 'admin:coupon:create', '2019-01-07 15:18:57', '2019-01-07 15:18:57', 0),
        (31, 3, 'admin:coupon:update', '2019-01-07 15:18:57', '2019-01-07 15:18:57', 0);
 UNLOCK TABLES;
+
+
+INSERT INTO `lottery_daletou` (`issue_number`, `red_balls`, `blue_balls`, `draw_date`, `jackpot_amount`, `first_prize`, `second_prize`, `third_prize`, `fourth_prize`, `fifth_prize`, `sixth_prize`, `seventh_prize`, `add_time`, `update_time`, `deleted`)
+VALUES
+    ('2023123', '01, 23, 34, 45, 56', '02, 07', '2023-10-01 18:30:00', 123456789.00, 1, 5, 20, 100, 500, 1000, 2000, NOW(), NOW(), 0),
+    ('2023124', '03, 15, 22, 37, 49', '04, 09', '2023-10-08 18:30:00', 134567890.00, 2, 6, 25, 110, 550, 1100, 2100, NOW(), NOW(), 0),
+    ('2023125', '05, 18, 26, 39, 51', '05, 10', '2023-10-15 18:30:00', 145678901.00, 0, 7, 30, 120, 600, 1200, 2200, NOW(), NOW(), 0);
+
+INSERT INTO `lottery_shuangseqiu` (`issue_number`, `red_balls`, `blue_balls`, `draw_date`, `jackpot_amount`, `first_prize`, `second_prize`, `third_prize`, `fourth_prize`, `fifth_prize`, `sixth_prize`, `seventh_prize`, `add_time`, `update_time`, `deleted`)
+VALUES
+    ('2023123', '02, 14, 27, 33, 41, 53', '03, 11', '2023-10-02 18:30:00', 156789012.00, 1, 5, 20, 100, 500, 1000, 2000, NOW(), NOW(), 0),
+    ('2023124', '04, 16, 28, 34, 42, 54', '04, 12', '2023-10-09 18:30:00', 167890123.00, 2, 6, 25, 110, 550, 1100, 2100, NOW(), NOW(), 0),
+    ('2023125', '06, 17, 29, 35, 43, 55', '05, 13', '2023-10-16 18:30:00', 178901234.00, 0, 7, 30, 120, 600, 1200, 2200, NOW(), NOW(), 0);
+
+INSERT INTO `lottery_type` (`name`, `description`, `enabled`, `latest_issue_number`, `latest_draw_result`, `add_time`, `update_time`, `deleted`)
+VALUES
+    ('dlt', '大乐透彩票', 1, '2023125', '05, 18, 26, 39, 51; 05, 10', NOW(), NOW(), 0),
+    ('ssq', '双色球彩票', 1, '2023125', '06, 17, 29, 35, 43, 55; 05, 13', NOW(), NOW(), 0);
