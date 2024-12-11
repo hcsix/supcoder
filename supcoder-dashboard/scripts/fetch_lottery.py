@@ -2,9 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-# 目标网址
-url = 'https://kaijiang.500.com/'
-
 def fetch_lottery_data(url):
     # 发起HTTP请求获取网页内容
     response = requests.get(url)
@@ -103,5 +100,6 @@ def print_lottery_data(lottery_data):
 
 if __name__ == "__main__":
     # 主程序入口
+    url = 'https://kaijiang.500.com/'
     lottery_data = fetch_lottery_data(url)
     print_lottery_data(lottery_data)

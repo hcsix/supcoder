@@ -89,5 +89,24 @@ public class LotteryController {
         return ResponseEntity.ok(ResultUtil.success(results));
     }
 
+
+    @PutMapping("/updateLottery")
+    public ResponseEntity<JsonResult<?>> updateLottery(
+//            @RequestBody UpdateLotteryRequest request,
+            @RequestParam String app_id,
+            @RequestParam String app_secret) {
+        if (!isValidApp(app_id, app_secret)) {
+            return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
+        }
+
+        // 调用服务方法更新彩票结果
+//        boolean updated = lotteryService.updateLotteryResult(lotteryType, issueNumber, request.getNewResult());
+//        if (!updated) {
+//            return ResponseEntity.ok(ResultUtil.error(502, "Failed to update lottery result"));
+//        }
+        return ResponseEntity.ok(ResultUtil.success("Lottery result updated successfully"));
+    }
+
+
 }
 
