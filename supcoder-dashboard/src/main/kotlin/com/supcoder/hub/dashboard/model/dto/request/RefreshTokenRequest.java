@@ -1,4 +1,4 @@
-package com.supcoder.hub.dashboard.model.vo;
+package com.supcoder.hub.dashboard.model.dto.request;
 
 /**
  * RefreshTokenRequest

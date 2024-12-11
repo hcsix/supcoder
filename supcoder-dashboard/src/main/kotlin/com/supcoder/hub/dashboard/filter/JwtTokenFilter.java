@@ -1,23 +1,15 @@
 
 package com.supcoder.hub.dashboard.filter;
 
-import com.alibaba.fastjson.JSON;
-import com.supcoder.hub.core.exception.TipException;
-import com.supcoder.hub.core.util.ResultUtil;
-import com.supcoder.hub.core.validator.Order;
 import com.supcoder.hub.dashboard.auth.JwtToken;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URLEncoder;

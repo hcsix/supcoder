@@ -4,6 +4,9 @@ package com.supcoder.hub.dashboard.auth;
 import com.supcoder.hub.core.exception.TipException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
+
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * JwtUtil
@@ -29,6 +33,9 @@ public class JwtUtil {
 
     @Value("${jwt.refresh.expiration}")
     private long refreshExpiration;
+
+    @Autowired
+    private StringRedisTemplate redisTemplate;
 
     public String generateAccessToken(String username) {
         Map<String, Object> claims = new HashMap<>();
@@ -90,10 +97,6 @@ public class JwtUtil {
         }
     }
 
-    public boolean validateToken(String token, String username) {
-        final String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && !isTokenExpired(token));
-    }
 
     public boolean validateToken(String token) {
         if (token == null) {
@@ -101,11 +104,22 @@ public class JwtUtil {
         }
         try {
             final String extractedUsername = extractUsername(token);
-            return (extractedUsername.equals(extractUsername(token)) && !isTokenExpired(token));
+            return (extractedUsername.equals(extractUsername(token)) &&
+                    !isTokenExpired(token)) &&
+                    !isTokenInBlacklist(token);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
+
+    private boolean isTokenInBlacklist(String token) {
+        return redisTemplate.hasKey("blacklisted:" + token);
+    }
+
+    public void addToBlacklist(String token) {
+        redisTemplate.opsForValue().set("blacklisted:" + token, "true", refreshExpiration, TimeUnit.SECONDS);
+    }
+
 }
 

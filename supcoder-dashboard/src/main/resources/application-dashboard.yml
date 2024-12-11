@@ -4,3 +4,18 @@ jwt:
     expiration: 3600  # 例如，3600 秒（1小时）
   refresh:
     expiration: 86400  # 例如，86400 秒（1天）
+
+
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      timeout: 1800000
+      lettuce:
+        pool:
+          max-active: 100
+          max-wait: -1
+          max-idle: 5
+          min-idle: 0
