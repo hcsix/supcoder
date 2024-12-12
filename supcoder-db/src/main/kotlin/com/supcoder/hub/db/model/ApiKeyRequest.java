@@ -1,6 +1,5 @@
 package com.supcoder.hub.db.model;
 
-import java.util.List;
 
 /**
  * ApiKeyRequest
@@ -9,7 +8,22 @@ import java.util.List;
  * @date 2024/12/12
  */
 public class ApiKeyRequest {
-    private List<String> scope;
     private String service;
+    private String permissions;
 
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
 }

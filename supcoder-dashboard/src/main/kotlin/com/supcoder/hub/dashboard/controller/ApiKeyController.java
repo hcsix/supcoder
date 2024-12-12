@@ -8,10 +8,13 @@ package com.supcoder.hub.dashboard.controller;
  * @date 2024/12/12
  */
 
+import com.supcoder.hub.core.apikey.ApiKeyGenerator;
+import com.supcoder.hub.core.checker.ServiceChecker;
+import com.supcoder.hub.core.checker.PermissionChecker;
+import com.supcoder.hub.core.model.ApiKeyModel;
 import com.supcoder.hub.core.util.JsonResult;
 import com.supcoder.hub.core.util.ResultUtil;
 import com.supcoder.hub.dashboard.auth.JwtUtil;
-import com.supcoder.hub.db.domain.User;
 import com.supcoder.hub.db.model.ApiKey;
 import com.supcoder.hub.db.model.ApiKeyRequest;
 import com.supcoder.hub.db.model.ApiKeyUpdateRequest;
@@ -35,24 +38,30 @@ public class ApiKeyController {
     @Autowired
     private ApiKeyService apiKeyService;
 
+
     @Autowired
     private JwtUtil jwtUtil;
 
 
     @PostMapping("/create")
-    public ResponseEntity<JsonResult<ApiKey>> createApiKey(@RequestBody ApiKeyRequest request,
-                                                           @RequestHeader(value = "Authorization", required = false) String authorization) {
+    public ResponseEntity<JsonResult<ApiKeyModel>> createApiKey(@RequestBody ApiKeyRequest request,
+                                                                @RequestHeader(value = "Authorization", required = false) String authorization) {
         if (authorization == null) {
-            return ResponseEntity.badRequest().body("Authorization header is missing");
+            return ResponseEntity.ok(ResultUtil.unAuthorized("Authorization header is missing"));
         }
         String username = jwtUtil.extractUsername(authorization);
         if (username == null) {
-            return ResponseEntity.badRequest().body("Invalid authorization token");
+            return ResponseEntity.ok(ResultUtil.unAuthorized("Invalid authorization token"));
         }
-        User user = userService.queryByUsername(username);
-
-        ApiKey apiKey = apiKeyService.createApiKey(request.getUserInfo(), request.getScope(), request.getService());
-        return ResponseEntity.ok(ResultUtil.success(apiKey));
+        if (!ServiceChecker.isSupportedService(request.getService())) {
+            return ResponseEntity.ok(ResultUtil.badArgumentValue());
+        }
+        if (!PermissionChecker.isFormatValid(request.getPermissions())) {
+            return ResponseEntity.ok(ResultUtil.badArgumentValue());
+        }
+        ApiKeyModel key = ApiKeyGenerator.generateApiKey();
+        apiKeyService.createApiKey(key.getApiKey(), key.getSecretKey(), username, request.getPermissions(), request.getService());
+        return ResponseEntity.ok(ResultUtil.success(key));
     }
 
     @GetMapping("/list")

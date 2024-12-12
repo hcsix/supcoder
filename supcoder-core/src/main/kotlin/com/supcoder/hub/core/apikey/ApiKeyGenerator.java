@@ -1,11 +1,8 @@
 package com.supcoder.hub.core.apikey;
 
 
-import org.apache.tomcat.util.codec.binary.Base64;
+import com.supcoder.hub.core.model.ApiKeyModel;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 /**
@@ -16,20 +13,15 @@ import java.util.UUID;
  */
 public class ApiKeyGenerator {
 
-    public static String generateApiKey() {
-        UUID uuid = UUID.randomUUID();
-        byte[] uuidBytes = uuid.toString().getBytes(StandardCharsets.UTF_8);
-        return Base64.encodeBase64URLSafeString(uuidBytes);
+    public static ApiKeyModel generateApiKey() {
+        UUID key = UUID.randomUUID();
+        UUID secret = UUID.randomUUID();
+        ApiKeyModel apiKey = new ApiKeyModel();
+        apiKey.setApiKey(key.toString().replace("-", ""));
+        apiKey.setApiKey(secret.toString().replace("-", ""));
+        return apiKey;
     }
 
-    public static String generateSecretKey(String apiKey) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = digest.digest((apiKey + System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
-            return Base64.encodeBase64URLSafeString(hashBytes);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("SHA-256 algorithm not found", e);
-        }
-    }
+
 
 }

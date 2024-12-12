@@ -2,6 +2,7 @@ package com.supcoder.hub.core.util;
 
 
 import com.supcoder.hub.core.exception.ErrorCodeEnum;
+import org.springframework.http.HttpStatus;
 
 /**
  * @author lee
@@ -110,4 +111,8 @@ public class ResultUtil {
         return error(506, "无操作权限");
     }
 
+
+    public static JsonResult unAuthorized(String errorMsg) {
+        return error(HttpStatus.UNAUTHORIZED.value(), errorMsg);
+    }
 }
