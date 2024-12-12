@@ -191,7 +191,7 @@ const Login: React.FC = () => {
             </div>
 
           </LoginForm>
-          <div className={styles.registerButton}>
+          <div style={{ textAlign: 'center', marginTop: 16 }}>
             <a onClick={() => window.location.href = ('/user/register')}>
               <FormattedMessage id="pages.login.register" defaultMessage="注册账号" />
             </a>

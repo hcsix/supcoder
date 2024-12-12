@@ -89,7 +89,10 @@ export const errorConfig: RequestConfig = {
   requestInterceptors: [
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
-      const url = config?.url?.concat('?token = 123');
+      const excludedUrls = ['api/auth/login', 'api/auth/register']; // 不添加token的接口
+      const url = excludedUrls.some(excludedUrl => config?.url?.includes(excludedUrl))
+        ? config?.url
+        : config?.url?.concat('?token=123');
       return { ...config, url };
     },
   ],
