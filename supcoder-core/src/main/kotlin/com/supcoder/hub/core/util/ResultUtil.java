@@ -115,4 +115,7 @@ public class ResultUtil {
     public static JsonResult unAuthorized(String errorMsg) {
         return error(HttpStatus.UNAUTHORIZED.value(), errorMsg);
     }
+    public static JsonResult notFound(String errorMsg) {
+        return error(HttpStatus.NOT_FOUND.value(), errorMsg);
+    }
 }

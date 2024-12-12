@@ -5,7 +5,6 @@ import com.supcoder.hub.db.dao.LotteryDaletouMapper;
 import com.supcoder.hub.db.dao.LotteryShuangseqiuMapper;
 import com.supcoder.hub.db.dao.LotteryTypeMapper;
 import com.supcoder.hub.db.domain.*;
-import com.supcoder.hub.db.model.LotteryDataVo;
 import com.supcoder.hub.db.model.LotteryItemVo;
 import com.supcoder.hub.db.model.LotteryVo;
 import com.supcoder.hub.db.service.lottery.DaletouStrategy;
@@ -38,7 +37,7 @@ public class LotteryService {
 
     public List<LotteryType> getSupportedLotteryTypes() {
         LotteryTypeExample example = new LotteryTypeExample();
-        example.or().andEnabledEqualTo(true);
+        example.createCriteria().andEnabledEqualTo(true);
         return lotteryTypeMapper.selectByExample(example);
     }
 
@@ -78,7 +77,7 @@ public class LotteryService {
                         .orElse(null);
                 // 更新lotteryType
                 LotteryTypeExample example = new LotteryTypeExample();
-                example.or().andNameEqualTo(lotteryItem.getType());
+                example.createCriteria().andNameEqualTo(lotteryItem.getType());
                 LotteryType lotteryType = lotteryTypeMapper.selectOneByExample(example);
                 if (lotteryType == null){
                     lotteryType = new LotteryType();

@@ -15,12 +15,9 @@ import com.supcoder.hub.core.model.ApiKeyModel;
 import com.supcoder.hub.core.util.JsonResult;
 import com.supcoder.hub.core.util.ResultUtil;
 import com.supcoder.hub.dashboard.auth.JwtUtil;
-import com.supcoder.hub.db.model.ApiKey;
+import com.supcoder.hub.db.domain.ApiCallLogs;
+import com.supcoder.hub.db.domain.ApiKeys;
 import com.supcoder.hub.db.model.ApiKeyRequest;
-import com.supcoder.hub.db.model.ApiKeyUpdateRequest;
-import com.supcoder.hub.db.model.RotatedApiKey;
-import com.supcoder.hub.db.model.ApiKeyStatusRequest;
-import com.supcoder.hub.db.model.ApiCallStatistics;
 import com.supcoder.hub.db.model.ApiCallLog;
 import com.supcoder.hub.db.service.ApiKeyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -65,95 +63,37 @@ public class ApiKeyController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<JsonResult<List<ApiKey>>> listApiKeys(@RequestParam(required = false) String userId,
-                                                                @RequestParam String app_id,
-                                                                @RequestParam String app_secret) {
-
-        List<ApiKey> apiKeys = apiKeyService.listApiKeys(userId);
+    public ResponseEntity<JsonResult<List<ApiKeys>>> listApiKeys(
+            @RequestHeader(value = "Authorization", required = false) String authorization) {
+        if (authorization == null) {
+            return ResponseEntity.ok(ResultUtil.unAuthorized("Authorization header is missing"));
+        }
+        String username = jwtUtil.extractUsername(authorization);
+        if (username == null) {
+            return ResponseEntity.ok(ResultUtil.unAuthorized("Invalid authorization token"));
+        }
+        List<ApiKeys> apiKeys = apiKeyService.getApiKeyList(username);
         return ResponseEntity.ok(ResultUtil.success(apiKeys));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<JsonResult<ApiKey>> getApiKeyDetails(@PathVariable String id,
-                                                               @RequestParam String app_id,
-                                                               @RequestParam String app_secret) {
-        ApiKey apiKey = apiKeyService.getApiKeyById(id);
-        if (apiKey == null) {
-            return ResponseEntity.ok(ResultUtil.error(404, "API Key not found"));
-        }
-        return ResponseEntity.ok(ResultUtil.success(apiKey));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<JsonResult<ApiKey>> updateApiKey(@PathVariable String id,
-                                                           @RequestBody ApiKeyUpdateRequest request,
-                                                           @RequestParam String app_id,
-                                                           @RequestParam String app_secret) {
-
-        ApiKey updatedApiKey = apiKeyService.updateApiKey(id, request.getScope(), request.getStatus());
-        if (updatedApiKey == null) {
-            return ResponseEntity.ok(ResultUtil.error(404, "API Key not found"));
-        }
-        return ResponseEntity.ok(ResultUtil.success(updatedApiKey));
-    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<JsonResult<Void>> deleteApiKey(@PathVariable String id,
-                                                         @RequestParam String app_id,
-                                                         @RequestParam String app_secret) {
+    public ResponseEntity<JsonResult<Void>> deleteApiKey(@PathVariable String id) {
 
-        boolean isDeleted = apiKeyService.deleteApiKey(id);
+        boolean isDeleted = apiKeyService.deleteApiKey(Integer.valueOf(id));
         if (!isDeleted) {
-            return ResponseEntity.ok(ResultUtil.error(404, "API Key not found"));
+            return ResponseEntity.ok(ResultUtil.notFound("API Key not found"));
         }
         return ResponseEntity.ok(ResultUtil.success(null));
     }
 
-    @PatchMapping("/{id}/status")
-    public ResponseEntity<JsonResult<ApiKey>> changeApiKeyStatus(@PathVariable String id,
-                                                                 @RequestBody ApiKeyStatusRequest request,
-                                                                 @RequestParam String app_id,
-                                                                 @RequestParam String app_secret) {
-
-        ApiKey apiKey = apiKeyService.changeApiKeyStatus(id, request.getStatus());
-        if (apiKey == null) {
-            return ResponseEntity.ok(ResultUtil.error(404, "API Key not found"));
-        }
-        return ResponseEntity.ok(ResultUtil.success(apiKey));
-    }
-
-    @PatchMapping("/{id}/rotate")
-    public ResponseEntity<JsonResult<RotatedApiKey>> rotateApiKey(@PathVariable String id,
-                                                                  @RequestParam String app_id,
-                                                                  @RequestParam String app_secret) {
-
-        RotatedApiKey rotatedApiKey = apiKeyService.rotateApiKey(id);
-        if (rotatedApiKey == null) {
-            return ResponseEntity.ok(ResultUtil.error(404, "API Key not found"));
-        }
-        return ResponseEntity.ok(ResultUtil.success(rotatedApiKey));
-    }
-
-    @GetMapping("/stats")
-    public ResponseEntity<JsonResult<ApiCallStatistics>> getApiCallStatistics(@RequestParam(required = false) String userId,
-                                                                              @RequestParam(required = false) String service,
-                                                                              @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-                                                                              @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-                                                                              @RequestParam String app_id,
-                                                                              @RequestParam String app_secret) {
-
-        ApiCallStatistics stats = apiKeyService.getApiCallStatistics(userId, service, startDate, endDate);
-        return ResponseEntity.ok(ResultUtil.success(stats));
-    }
 
     @GetMapping("/logs")
     public ResponseEntity<JsonResult<List<ApiCallLog>>> getApiCallLogs(@RequestParam String apiKeyId,
-                                                                       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-                                                                       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-                                                                       @RequestParam String app_id,
-                                                                       @RequestParam String app_secret) {
-
-        List<ApiCallLog> logs = apiKeyService.getApiCallLogs(apiKeyId, startDate, endDate);
+                                                                       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+                                                                       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate
+    ) {
+        List<ApiCallLogs> logs = apiKeyService.getApiCallLogs(Integer.valueOf(apiKeyId), startDate, endDate);
         return ResponseEntity.ok(ResultUtil.success(logs));
     }
 }

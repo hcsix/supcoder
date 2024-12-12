@@ -3,10 +3,16 @@ package com.supcoder.hub.db.service;
 import com.supcoder.hub.db.dao.ApiCallLogsMapper;
 import com.supcoder.hub.db.dao.ApiKeysMapper;
 import com.supcoder.hub.db.domain.ApiCallLogs;
+import com.supcoder.hub.db.domain.ApiCallLogsExample;
 import com.supcoder.hub.db.domain.ApiKeys;
+import com.supcoder.hub.db.domain.ApiKeysExample;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * ApiKeyService
@@ -35,7 +41,34 @@ public class ApiKeyService {
     }
 
 
+    public List<ApiKeys> getApiKeyList(String userName) {
+        ApiKeysExample apiKeysExample = new ApiKeysExample();
+        apiKeysExample.createCriteria().andUsernameEqualTo(userName);
+        return apiKeysMapper.selectByExample(apiKeysExample);
+    }
+
+
 //    public int updateApiKeyStatus(String apiKeyId, boolean status) {
 //        return apiKeysMapper.updateByPrimaryKeySelective(ApiKeys.builder().apiKeyId(apiKeyId).status(status).build());
 //    }
+
+
+    public boolean deleteApiKey(Integer apiKeyId) {
+        return apiKeysMapper.deleteByPrimaryKey(apiKeyId) > 0;
+    }
+
+
+    public List<ApiCallLogs> getApiCallLogs(Integer apiKeyId, LocalDateTime startDate, LocalDateTime endDate) {
+        if (startDate != null && endDate != null) {
+            return apiCallLogsMapper.selectByExample(ApiCallLogsExample.newAndCreateCriteria()
+                    .andKeyIdEqualTo(apiKeyId)
+                    .andRequestDateBetween(startDate, endDate)
+                            .example()
+                    );
+        }
+        return apiCallLogsMapper.selectByExample(ApiCallLogsExample.newAndCreateCriteria()
+                .andKeyIdEqualTo(apiKeyId)
+                .example()
+        );
+    }
 }
