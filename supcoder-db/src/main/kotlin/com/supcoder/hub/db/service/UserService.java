@@ -26,7 +26,7 @@ public class UserService {
     public UserVo findUserVoById(Long userId) {
         User user = findById(userId);
         return new UserVo(
-                user.getId(),
+                user.getUserId(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),

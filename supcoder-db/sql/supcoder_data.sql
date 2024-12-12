@@ -101,3 +101,16 @@ INSERT INTO `lottery_type` (`name`, `description`, `enabled`, `latest_issue_numb
 VALUES
     ('dlt', '大乐透彩票', 1, '2023125', '05, 18, 26, 39, 51; 05, 10', NOW(), NOW(), 0),
     ('ssq', '双色球彩票', 1, '2023125', '06, 17, 29, 35, 43, 55; 05, 13', NOW(), NOW(), 0);
+
+
+
+INSERT INTO `api_keys` (`access_key`, `secret_key`, `user_id`, `status`, `creation_date`, `last_used_date`, `service`, `permissions`) VALUES
+                                                                                                                                          ('AK123', 'SK123', 1, 'active', '2024-12-12 10:00:00', NULL, 'lottery', 'read,write'),
+                                                                                                                                          ('AK456', 'SK456', 2, 'inactive', '2024-12-12 11:00:00', NULL, 'lottery', 'read'),
+                                                                                                                                          ('AK789', 'SK789', 3, 'active', '2024-12-12 12:00:00', NULL, 'lottery', 'write');
+
+
+INSERT INTO `api_call_logs` (`key_id`, `user_id`, `service`, `request_method`, `request_url`, `request_date`, `response_status`) VALUES
+                                                                                                                                     (1, 1, 'lottery', 'GET', '/api/service1/resource1', '2024-12-12 12:00:00', 200),
+                                                                                                                                     (2, 2, 'lottery', 'POST', '/api/service2/resource2', '2024-12-12 13:00:00', 201),
+                                                                                                                                     (3, 3, 'lottery', 'PUT', '/api/service3/resource3', '2024-12-12 14:00:00', 204);
