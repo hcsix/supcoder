@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import json
 
 def fetch_lottery_data(url):
     # 发起HTTP请求获取网页内容
@@ -98,8 +99,27 @@ def print_lottery_data(lottery_data):
         except KeyError as e:
             print(f"数据缺失: {e}")
 
+
+def format_lottery_data(original_data):
+    formatted_data = []
+    for lottery, data in original_data.items():
+        formatted_item = {
+            'type': lottery,
+            'name': data.get('name', ''),
+            'numbers': data.get('numbers', ''),
+            'money': data.get('money', ''),
+            'period': data.get('period', ''),
+            'date': data.get('date', ''),
+            'draw_date': data.get('draw_date', '')
+        }
+        formatted_data.append(formatted_item)
+    return json.dumps(formatted_data, ensure_ascii=False, indent=4)
+
 if __name__ == "__main__":
     # 主程序入口
     url = 'https://kaijiang.500.com/'
     lottery_data = fetch_lottery_data(url)
     print_lottery_data(lottery_data)
+    print("------------------------")
+    formatted_data = format_lottery_data(lottery_data)
+    print(formatted_data)
