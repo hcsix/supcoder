@@ -8,8 +8,8 @@ public enum ErrorCodeEnum {
      * 请求成功
      */
     SUCCESS(0, "success"),
-    UNKNOWN_ERROR(-1, "未知错误"),
-    PARAM_VALID_ERROR(-2, "参数错误"),
+    UNKNOWN_ERROR(500, "未知错误"),
+    PARAM_VALID_ERROR(500, "参数错误"),
     /**
      * 运行时异常
      */

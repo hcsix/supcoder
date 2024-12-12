@@ -7,7 +7,7 @@ import { history, Link } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === 'dev';
 const loginPath = '/user/login';
 
 /**
@@ -131,6 +131,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const request: RequestConfig = {
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: process.env.REACT_APP_API_URL,
   ...errorConfig,
 };
