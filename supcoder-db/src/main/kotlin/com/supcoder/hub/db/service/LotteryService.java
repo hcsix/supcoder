@@ -5,6 +5,7 @@ import com.supcoder.hub.db.dao.LotteryDaletouMapper;
 import com.supcoder.hub.db.dao.LotteryShuangseqiuMapper;
 import com.supcoder.hub.db.dao.LotteryTypeMapper;
 import com.supcoder.hub.db.domain.*;
+import com.supcoder.hub.db.model.LotteryDataVo;
 import com.supcoder.hub.db.model.LotteryVo;
 import com.supcoder.hub.db.service.lottery.DaletouStrategy;
 import com.supcoder.hub.db.service.lottery.ILotteryStrategy;
@@ -12,10 +13,8 @@ import com.supcoder.hub.db.service.lottery.ShuangseqiuStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service
 public class LotteryService {
@@ -66,6 +65,44 @@ public class LotteryService {
         return Optional.ofNullable(lotteryStrategies.get(lotteryType))
                 .map(strategy -> strategy.getRecentLotteryHistory(limit))
                 .orElse(null);
+    }
+
+
+    public boolean updateLottery(LotteryDataVo lotteryData) {
+        try {
+            lotteryData.getLotteryItems().forEach(lotteryItem -> {
+                // 根据lotteryItem.getType()选择对应的lotteryStrategy
+                Optional.ofNullable(lotteryStrategies.get(lotteryItem.getType()))
+                        .map(strategy -> strategy.updateLottery(lotteryItem))
+                        .orElse(null);
+                // 更新lotteryType
+                LotteryTypeExample example = new LotteryTypeExample();
+                example.or().andNameEqualTo(lotteryItem.getType());
+                LotteryType lotteryType = lotteryTypeMapper.selectOneByExample(example);
+                if (lotteryType == null){
+                    lotteryType = new LotteryType();
+                    lotteryType.setName(lotteryItem.getType());
+                    lotteryType.setDescription(lotteryItem.getName());
+
+                    lotteryType.setEnabled(Objects.equals(lotteryItem.getType(), Constants.LOTTERY_TYPE_SSQ)
+                            || Objects.equals(lotteryItem.getType(), Constants.LOTTERY_TYPE_DLT));
+
+                    lotteryType.setLatestDrawResult(lotteryItem.getNumbers());
+                    lotteryType.setLatestIssueNumber(lotteryItem.getPeriod());
+                    lotteryType.setUpdateTime(LocalDateTime.now());
+                    lotteryTypeMapper.insert(lotteryType);
+                } else {
+                    lotteryType.setLatestDrawResult(lotteryItem.getNumbers());
+                    lotteryType.setLatestIssueNumber(lotteryItem.getPeriod());
+                    lotteryType.setUpdateTime(LocalDateTime.now());
+                    lotteryTypeMapper.updateByExample(lotteryType, example);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 }

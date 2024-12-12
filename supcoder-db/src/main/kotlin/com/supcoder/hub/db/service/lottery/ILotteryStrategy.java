@@ -1,5 +1,6 @@
 package com.supcoder.hub.db.service.lottery;
 
+import com.supcoder.hub.db.model.LotteryItemVo;
 import com.supcoder.hub.db.model.LotteryVo;
 
 import java.util.List;
@@ -12,7 +13,11 @@ import java.util.List;
  */
 public interface ILotteryStrategy {
     LotteryVo getLotteryVo(String issueNumber);
+
     LotteryVo getLatestLotteryResult();
+
     List<LotteryVo> getRecentLotteryHistory(int limit);
+
+    boolean updateLottery(LotteryItemVo lotteryVo);
 }
 

@@ -8,6 +8,7 @@ package com.supcoder.hub.dashboard.controller;
  */
 import com.supcoder.hub.core.util.JsonResult;
 import com.supcoder.hub.core.util.ResultUtil;
+import com.supcoder.hub.db.model.LotteryDataVo;
 import com.supcoder.hub.db.model.LotteryVo;
 import com.supcoder.hub.db.domain.LotteryType;
 import com.supcoder.hub.db.service.LotteryService;
@@ -92,18 +93,17 @@ public class LotteryController {
 
     @PutMapping("/updateLottery")
     public ResponseEntity<JsonResult<?>> updateLottery(
-//            @RequestBody UpdateLotteryRequest request,
+            @RequestBody LotteryDataVo lotteryData,
             @RequestParam String app_id,
             @RequestParam String app_secret) {
         if (!isValidApp(app_id, app_secret)) {
             return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
         }
-
         // 调用服务方法更新彩票结果
-//        boolean updated = lotteryService.updateLotteryResult(lotteryType, issueNumber, request.getNewResult());
-//        if (!updated) {
-//            return ResponseEntity.ok(ResultUtil.error(502, "Failed to update lottery result"));
-//        }
+        boolean updated = lotteryService.updateLottery(lotteryData);
+        if (!updated) {
+            return ResponseEntity.ok(ResultUtil.error(502, "Failed to update lottery result"));
+        }
         return ResponseEntity.ok(ResultUtil.success("Lottery result updated successfully"));
     }
 
