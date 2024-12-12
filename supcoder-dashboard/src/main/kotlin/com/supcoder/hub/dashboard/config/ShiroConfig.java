@@ -54,7 +54,7 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/filterError/*/*", "anon");
         chainDefinition.addPathDefinition("/api/auth/login", "anon");
         chainDefinition.addPathDefinition("/api/auth/register", "anon");
-        chainDefinition.addPathDefinition("/api/lottery/*", "anon");
+        chainDefinition.addPathDefinition("/api/lottery/**", "anon");
 
         chainDefinition.addPathDefinition("/api/auth/refreshToken", "authc");
         chainDefinition.addPathDefinition("/api/auth/logout", "authc");

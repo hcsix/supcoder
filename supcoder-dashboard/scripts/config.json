@@ -1,0 +1,8 @@
+{
+  "write_file": true,
+  "print_log": true,
+  "log_level": "INFO",
+  "source_url": "https://kaijiang.500.com/",
+  "api_url": "http://127.0.0.1:8080/api/lottery/manager/updateLottery",
+  "public_key_path": "public_key.pem"
+}

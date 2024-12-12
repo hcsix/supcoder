@@ -68,7 +68,7 @@ public class DaletouStrategy implements ILotteryStrategy {
             lottery.setRedBalls(balls[0]);
             lottery.setBlueBalls(balls[1]);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDateTime drawDate = LocalDateTime.parse(lotteryVo.getDrawDate(), formatter);
+            LocalDateTime drawDate = LocalDateTime.parse(lotteryVo.getDate(), formatter);
             lottery.setDrawDate(drawDate);
             lottery.setAddTime(LocalDateTime.now());
             lottery.setUpdateTime(LocalDateTime.now());

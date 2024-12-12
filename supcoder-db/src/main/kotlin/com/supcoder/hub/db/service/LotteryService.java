@@ -6,6 +6,7 @@ import com.supcoder.hub.db.dao.LotteryShuangseqiuMapper;
 import com.supcoder.hub.db.dao.LotteryTypeMapper;
 import com.supcoder.hub.db.domain.*;
 import com.supcoder.hub.db.model.LotteryDataVo;
+import com.supcoder.hub.db.model.LotteryItemVo;
 import com.supcoder.hub.db.model.LotteryVo;
 import com.supcoder.hub.db.service.lottery.DaletouStrategy;
 import com.supcoder.hub.db.service.lottery.ILotteryStrategy;
@@ -68,9 +69,9 @@ public class LotteryService {
     }
 
 
-    public boolean updateLottery(LotteryDataVo lotteryData) {
+    public boolean updateLottery( List<LotteryItemVo>  lotteryData) {
         try {
-            lotteryData.getLotteryItems().forEach(lotteryItem -> {
+            lotteryData.forEach(lotteryItem -> {
                 // 根据lotteryItem.getType()选择对应的lotteryStrategy
                 Optional.ofNullable(lotteryStrategies.get(lotteryItem.getType()))
                         .map(strategy -> strategy.updateLottery(lotteryItem))
@@ -90,6 +91,7 @@ public class LotteryService {
                     lotteryType.setLatestDrawResult(lotteryItem.getNumbers());
                     lotteryType.setLatestIssueNumber(lotteryItem.getPeriod());
                     lotteryType.setUpdateTime(LocalDateTime.now());
+                    lotteryType.setDeleted(false);
                     lotteryTypeMapper.insert(lotteryType);
                 } else {
                     lotteryType.setLatestDrawResult(lotteryItem.getNumbers());

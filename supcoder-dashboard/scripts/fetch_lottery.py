@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import json
 
 def fetch_lottery_data(url):
     # 发起HTTP请求获取网页内容
@@ -65,13 +64,11 @@ def extract_lottery_data(script_text):
     lottery_data = {}
     # 提取彩票结果
     for result, numbers in results:
-        print(f"Extracted numbers: {result} -> {numbers}")
         if result not in lottery_data:
             lottery_data[result] = {}
         lottery_data[result]['numbers'] = numbers
     # 提取彩票奖金
     for result, money in moneys:
-        print(f"Extracted money: {result} -> {money}")
         if result not in lottery_data:
             lottery_data[result] = {}
         lottery_data[result]['money'] = money
@@ -113,13 +110,5 @@ def format_lottery_data(original_data):
             'draw_date': data.get('draw_date', '')
         }
         formatted_data.append(formatted_item)
-    return json.dumps(formatted_data, ensure_ascii=False, indent=4)
+    return formatted_data
 
-if __name__ == "__main__":
-    # 主程序入口
-    url = 'https://kaijiang.500.com/'
-    lottery_data = fetch_lottery_data(url)
-    print_lottery_data(lottery_data)
-    print("------------------------")
-    formatted_data = format_lottery_data(lottery_data)
-    print(formatted_data)
