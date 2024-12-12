@@ -131,13 +131,13 @@ CREATE TABLE `lottery_shuangseqiu`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='双色球开奖结果表';
 
-
+DROP TABLE IF EXISTS `api_keys`;
 CREATE TABLE `api_keys`
 (
     `key_id`         INT AUTO_INCREMENT PRIMARY KEY COMMENT 'API密钥的唯一标识符，主键，自增',
     `access_key`     VARCHAR(255) NOT NULL UNIQUE COMMENT 'Access Key，用于标识API密钥',
     `secret_key`     VARCHAR(255) NOT NULL COMMENT 'Secret Key，用于生成签名和进行加密，加密存储',
-    `user_id`        INT          NOT NULL COMMENT '关联的用户标识',
+    `username`        VARCHAR(255)   NOT NULL COMMENT '关联的用户标识',
     `status`         VARCHAR(50)  NOT NULL COMMENT 'API Key的状态，例如active、inactive、revoked',
     `creation_date`  DATETIME              DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期，默认为当前时间戳',
     `last_used_date` DATETIME COMMENT '最后使用日期',
@@ -147,11 +147,12 @@ CREATE TABLE `api_keys`
  AUTO_INCREMENT = 1
  DEFAULT CHARSET = utf8mb4 COMMENT ='彩票类型表';;
 
+DROP TABLE IF EXISTS `api_call_logs`;
 CREATE TABLE `api_call_logs`
 (
     `log_id`          INT AUTO_INCREMENT PRIMARY KEY COMMENT '日志记录的唯一标识符，主键，自增',
     `key_id`          INT COMMENT '关联的API密钥ID',
-    `user_id`         INT          NOT NULL COMMENT '发起请求的用户ID',
+    `username`        VARCHAR(255) NOT NULL COMMENT '发起请求的用户',
     `service`         VARCHAR(255) NOT NULL COMMENT 'API服务名称，标识被调用的服务',
     `request_method`  VARCHAR(10) COMMENT '请求方法，例如GET或POST',
     `request_url`     VARCHAR(255) COMMENT '请求的URL',
@@ -159,4 +160,4 @@ CREATE TABLE `api_call_logs`
     `response_status` INT COMMENT '响应状态码'
 ) ENGINE = InnoDB
  AUTO_INCREMENT = 1
- DEFAULT CHARSET = utf8mb4 COMMENT ='彩票类型表';;
+ DEFAULT CHARSET = utf8mb4 COMMENT ='彩票类型表';
