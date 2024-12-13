@@ -1,41 +1,23 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-**/node_modules
-# roadhog-api-doc ignore
-/src/utils/request-temp.js
-_roadhog-api-doc
-
-# production
-/dist
-
-# misc
 .DS_Store
+node_modules/
+dist/
 npm-debug.log*
-yarn-error.log
+yarn-debug.log*
+yarn-error.log*
+**/*.log
 
-/coverage
+tests/**/coverage/
+tests/e2e/reports
+selenium-debug.log
+
+# Editor directories and files
 .idea
-yarn.lock
-package-lock.json
-*bak
 .vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.local
 
-
-# visual studio code
-.history
-*.log
-functions/*
-.temp/**
-
-# umi
-.umi
-.umi-production
-.umi-test
-
-# screenshot
-screenshot
-.firebase
-.eslintcache
-
-build
+package-lock.json
+yarn.lock
