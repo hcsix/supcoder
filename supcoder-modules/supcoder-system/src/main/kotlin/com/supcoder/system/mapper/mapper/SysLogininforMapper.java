@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper.mapper;
 
-import com.ruoyi.system.api.domain.SysLogininfor;
+import com.supcoder.system.api.domain.SysLogininfor;
 
 import java.util.List;
 
 /**
  * 系统访问日志情况信息 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysLogininforMapper
 {

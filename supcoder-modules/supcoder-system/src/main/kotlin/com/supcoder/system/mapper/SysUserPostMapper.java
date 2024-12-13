@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper;
 
-import com.ruoyi.system.domain.SysUserPost;
+import com.supcoder.system.domain.SysUserPost;
 
 import java.util.List;
 
 /**
  * 用户与岗位关联表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysUserPostMapper
 {

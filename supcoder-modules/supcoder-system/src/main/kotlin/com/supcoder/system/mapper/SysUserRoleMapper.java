@@ -1,6 +1,6 @@
 package com.supcoder.system.mapper;
 
-import com.ruoyi.system.domain.SysUserRole;
+import com.supcoder.system.domain.SysUserRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 用户与角色关联表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysUserRoleMapper
 {

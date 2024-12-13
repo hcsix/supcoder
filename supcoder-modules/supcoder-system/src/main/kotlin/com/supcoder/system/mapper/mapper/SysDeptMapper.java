@@ -1,6 +1,6 @@
 package com.supcoder.system.mapper.mapper;
 
-import com.ruoyi.system.api.domain.SysDept;
+import com.supcoder.system.api.domain.SysDept;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 部门管理 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysDeptMapper
 {

@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper;
 
-import com.ruoyi.system.domain.SysNotice;
+import com.supcoder.system.domain.SysNotice;
 
 import java.util.List;
 
 /**
  * 通知公告表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysNoticeMapper
 {

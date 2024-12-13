@@ -1,9 +1,9 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.security.utils.DictUtils;
-import com.ruoyi.system.api.domain.SysDictData;
-import com.ruoyi.system.mapper.SysDictDataMapper;
-import com.ruoyi.system.service.ISysDictDataService;
+import com.supcoder.common.security.utils.DictUtils;
+import com.supcoder.system.api.domain.SysDictData;
+import com.supcoder.system.mapper.SysDictDataMapper;
+import com.supcoder.system.service.ISysDictDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 字典 业务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService

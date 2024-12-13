@@ -1,21 +1,21 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.exception.ServiceException;
-import com.ruoyi.common.core.utils.SpringUtils;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.core.utils.bean.BeanValidators;
-import com.ruoyi.common.datascope.annotation.DataScope;
-import com.ruoyi.common.security.utils.SecurityUtils;
-import com.ruoyi.system.api.domain.SysRole;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.domain.SysPost;
-import com.ruoyi.system.domain.SysUserPost;
-import com.ruoyi.system.domain.SysUserRole;
-import com.ruoyi.system.mapper.*;
-import com.ruoyi.system.service.ISysConfigService;
-import com.ruoyi.system.service.ISysDeptService;
-import com.ruoyi.system.service.ISysUserService;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.exception.ServiceException;
+import com.supcoder.common.core.utils.SpringUtils;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.core.utils.bean.BeanValidators;
+import com.supcoder.common.datascope.annotation.DataScope;
+import com.supcoder.common.security.utils.SecurityUtils;
+import com.supcoder.system.api.domain.SysRole;
+import com.supcoder.system.api.domain.SysUser;
+import com.supcoder.system.domain.SysPost;
+import com.supcoder.system.domain.SysUserPost;
+import com.supcoder.system.domain.SysUserRole;
+import com.supcoder.system.mapper.*;
+import com.supcoder.system.service.ISysConfigService;
+import com.supcoder.system.service.ISysDeptService;
+import com.supcoder.system.service.ISysUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 /**
  * 用户 业务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysUserServiceImpl implements ISysUserService

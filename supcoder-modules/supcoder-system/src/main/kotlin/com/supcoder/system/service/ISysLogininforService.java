@@ -1,13 +1,13 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.domain.SysLogininfor;
+import com.supcoder.system.api.domain.SysLogininfor;
 
 import java.util.List;
 
 /**
  * 系统访问日志情况信息 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysLogininforService
 {

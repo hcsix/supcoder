@@ -1,14 +1,14 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.exception.ServiceException;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.security.utils.DictUtils;
-import com.ruoyi.system.api.domain.SysDictData;
-import com.ruoyi.system.api.domain.SysDictType;
-import com.ruoyi.system.mapper.SysDictDataMapper;
-import com.ruoyi.system.mapper.SysDictTypeMapper;
-import com.ruoyi.system.service.ISysDictTypeService;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.exception.ServiceException;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.security.utils.DictUtils;
+import com.supcoder.system.api.domain.SysDictData;
+import com.supcoder.system.api.domain.SysDictType;
+import com.supcoder.system.mapper.SysDictDataMapper;
+import com.supcoder.system.mapper.SysDictTypeMapper;
+import com.supcoder.system.service.ISysDictTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 /**
  * 字典 业务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysDictTypeServiceImpl implements ISysDictTypeService

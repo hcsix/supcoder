@@ -1,14 +1,14 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.CacheConstants;
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.exception.ServiceException;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.redis.service.RedisService;
-import com.ruoyi.system.domain.SysConfig;
-import com.ruoyi.system.mapper.SysConfigMapper;
-import com.ruoyi.system.service.ISysConfigService;
+import com.supcoder.common.core.constant.CacheConstants;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.exception.ServiceException;
+import com.supcoder.common.core.text.Convert;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.redis.service.RedisService;
+import com.supcoder.system.domain.SysConfig;
+import com.supcoder.system.mapper.SysConfigMapper;
+import com.supcoder.system.service.ISysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 参数配置 服务层实现
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysConfigServiceImpl implements ISysConfigService

@@ -1,14 +1,14 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.domain.SysDictData;
-import com.ruoyi.system.api.domain.SysDictType;
+import com.supcoder.system.api.domain.SysDictData;
+import com.supcoder.system.api.domain.SysDictType;
 
 import java.util.List;
 
 /**
  * 字典 业务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysDictTypeService
 {

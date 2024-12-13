@@ -1,13 +1,13 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.domain.SysConfig;
+import com.supcoder.system.domain.SysConfig;
 
 import java.util.List;
 
 /**
  * 参数配置 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysConfigService
 {

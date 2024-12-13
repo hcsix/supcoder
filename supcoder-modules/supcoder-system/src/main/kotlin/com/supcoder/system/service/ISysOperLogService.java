@@ -1,13 +1,13 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.domain.SysOperLog;
+import com.supcoder.system.api.domain.SysOperLog;
 
 import java.util.List;
 
 /**
  * 操作日志 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysOperLogService
 {

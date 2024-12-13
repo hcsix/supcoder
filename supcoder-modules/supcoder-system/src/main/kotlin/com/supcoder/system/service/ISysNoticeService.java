@@ -1,13 +1,13 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.domain.SysNotice;
+import com.supcoder.system.domain.SysNotice;
 
 import java.util.List;
 
 /**
  * 公告 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysNoticeService
 {

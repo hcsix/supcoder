@@ -1,19 +1,19 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.Constants;
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.security.utils.SecurityUtils;
-import com.ruoyi.system.api.domain.SysRole;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.domain.SysMenu;
-import com.ruoyi.system.domain.vo.MetaVo;
-import com.ruoyi.system.domain.vo.RouterVo;
-import com.ruoyi.system.domain.vo.TreeSelect;
-import com.ruoyi.system.mapper.SysMenuMapper;
-import com.ruoyi.system.mapper.SysRoleMapper;
-import com.ruoyi.system.mapper.SysRoleMenuMapper;
-import com.ruoyi.system.service.ISysMenuService;
+import com.supcoder.common.core.constant.Constants;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.security.utils.SecurityUtils;
+import com.supcoder.system.api.domain.SysRole;
+import com.supcoder.system.api.domain.SysUser;
+import com.supcoder.system.domain.SysMenu;
+import com.supcoder.system.domain.vo.MetaVo;
+import com.supcoder.system.domain.vo.RouterVo;
+import com.supcoder.system.domain.vo.TreeSelect;
+import com.supcoder.system.mapper.SysMenuMapper;
+import com.supcoder.system.mapper.SysRoleMapper;
+import com.supcoder.system.mapper.SysRoleMenuMapper;
+import com.supcoder.system.service.ISysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 /**
  * 菜单 业务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysMenuServiceImpl implements ISysMenuService

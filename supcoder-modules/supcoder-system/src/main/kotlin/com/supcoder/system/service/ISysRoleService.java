@@ -1,7 +1,7 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.domain.SysRole;
-import com.ruoyi.system.domain.SysUserRole;
+import com.supcoder.system.api.domain.SysRole;
+import com.supcoder.system.domain.SysUserRole;
 
 import java.util.List;
 import java.util.Set;
@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * 角色业务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysRoleService
 {

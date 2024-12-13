@@ -1,14 +1,14 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.domain.SysDept;
-import com.ruoyi.system.domain.vo.TreeSelect;
+import com.supcoder.system.api.domain.SysDept;
+import com.supcoder.system.domain.vo.TreeSelect;
 
 import java.util.List;
 
 /**
  * 部门管理 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysDeptService
 {

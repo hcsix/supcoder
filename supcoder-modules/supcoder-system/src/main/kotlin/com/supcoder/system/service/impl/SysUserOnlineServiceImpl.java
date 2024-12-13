@@ -1,15 +1,15 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.system.api.model.LoginUser;
-import com.ruoyi.system.domain.SysUserOnline;
-import com.ruoyi.system.service.ISysUserOnlineService;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.system.api.model.LoginUser;
+import com.supcoder.system.domain.SysUserOnline;
+import com.supcoder.system.service.ISysUserOnlineService;
 import org.springframework.stereotype.Service;
 
 /**
  * 在线用户 服务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysUserOnlineServiceImpl implements ISysUserOnlineService

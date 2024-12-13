@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper;
 
-import com.ruoyi.system.api.domain.SysDictType;
+import com.supcoder.system.api.domain.SysDictType;
 
 import java.util.List;
 
 /**
  * 字典表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysDictTypeMapper
 {

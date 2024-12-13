@@ -1,8 +1,8 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.system.api.domain.SysOperLog;
-import com.ruoyi.system.mapper.SysOperLogMapper;
-import com.ruoyi.system.service.ISysOperLogService;
+import com.supcoder.system.api.domain.SysOperLog;
+import com.supcoder.system.mapper.SysOperLogMapper;
+import com.supcoder.system.service.ISysOperLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 操作日志 服务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysOperLogServiceImpl implements ISysOperLogService

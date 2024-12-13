@@ -1,7 +1,7 @@
-package com.supcoder.system.dashboard
+package com.supcoder.system
 
-import com.supcoder.common.security.security.annotation.EnableCustomConfig
-import com.supcoder.common.security.security.annotation.EnableRyFeignClients
+import com.supcoder.common.security.annotation.EnableCustomConfig
+import com.supcoder.common.security.annotation.EnableRyFeignClients
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

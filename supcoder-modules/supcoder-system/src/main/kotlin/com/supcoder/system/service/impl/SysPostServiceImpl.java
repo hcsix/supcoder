@@ -1,12 +1,12 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.exception.ServiceException;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.system.domain.SysPost;
-import com.ruoyi.system.mapper.SysPostMapper;
-import com.ruoyi.system.mapper.SysUserPostMapper;
-import com.ruoyi.system.service.ISysPostService;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.exception.ServiceException;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.system.domain.SysPost;
+import com.supcoder.system.mapper.SysPostMapper;
+import com.supcoder.system.mapper.SysUserPostMapper;
+import com.supcoder.system.service.ISysPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 岗位信息 服务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysPostServiceImpl implements ISysPostService

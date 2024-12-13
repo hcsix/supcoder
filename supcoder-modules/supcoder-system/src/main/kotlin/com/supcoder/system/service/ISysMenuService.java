@@ -1,8 +1,8 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.domain.SysMenu;
-import com.ruoyi.system.domain.vo.RouterVo;
-import com.ruoyi.system.domain.vo.TreeSelect;
+import com.supcoder.system.domain.SysMenu;
+import com.supcoder.system.domain.vo.RouterVo;
+import com.supcoder.system.domain.vo.TreeSelect;
 
 import java.util.List;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * 菜单 业务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysMenuService
 {

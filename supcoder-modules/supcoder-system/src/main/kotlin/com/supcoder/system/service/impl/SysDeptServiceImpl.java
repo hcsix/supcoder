@@ -1,19 +1,19 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.exception.ServiceException;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.core.utils.SpringUtils;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.datascope.annotation.DataScope;
-import com.ruoyi.common.security.utils.SecurityUtils;
-import com.ruoyi.system.api.domain.SysDept;
-import com.ruoyi.system.api.domain.SysRole;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.domain.vo.TreeSelect;
-import com.ruoyi.system.mapper.SysDeptMapper;
-import com.ruoyi.system.mapper.SysRoleMapper;
-import com.ruoyi.system.service.ISysDeptService;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.exception.ServiceException;
+import com.supcoder.common.core.text.Convert;
+import com.supcoder.common.core.utils.SpringUtils;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.datascope.annotation.DataScope;
+import com.supcoder.common.security.utils.SecurityUtils;
+import com.supcoder.system.api.domain.SysDept;
+import com.supcoder.system.api.domain.SysRole;
+import com.supcoder.system.api.domain.SysUser;
+import com.supcoder.system.domain.vo.TreeSelect;
+import com.supcoder.system.mapper.SysDeptMapper;
+import com.supcoder.system.mapper.SysRoleMapper;
+import com.supcoder.system.service.ISysDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 /**
  * 部门管理 服务实现
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysDeptServiceImpl implements ISysDeptService

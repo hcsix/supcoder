@@ -1,8 +1,8 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.system.domain.SysNotice;
-import com.ruoyi.system.mapper.SysNoticeMapper;
-import com.ruoyi.system.service.ISysNoticeService;
+import com.supcoder.system.domain.SysNotice;
+import com.supcoder.system.mapper.SysNoticeMapper;
+import com.supcoder.system.service.ISysNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 公告 服务层实现
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysNoticeServiceImpl implements ISysNoticeService

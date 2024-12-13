@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper.mapper;
 
-import com.ruoyi.system.api.domain.SysRole;
+import com.supcoder.system.api.domain.SysRole;
 
 import java.util.List;
 
 /**
  * 角色表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysRoleMapper
 {

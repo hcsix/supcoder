@@ -1,21 +1,21 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.exception.ServiceException;
-import com.ruoyi.common.core.utils.SpringUtils;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.datascope.annotation.DataScope;
-import com.ruoyi.common.security.utils.SecurityUtils;
-import com.ruoyi.system.api.domain.SysRole;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.domain.SysRoleDept;
-import com.ruoyi.system.domain.SysRoleMenu;
-import com.ruoyi.system.domain.SysUserRole;
-import com.ruoyi.system.mapper.SysRoleDeptMapper;
-import com.ruoyi.system.mapper.SysRoleMapper;
-import com.ruoyi.system.mapper.SysRoleMenuMapper;
-import com.ruoyi.system.mapper.SysUserRoleMapper;
-import com.ruoyi.system.service.ISysRoleService;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.exception.ServiceException;
+import com.supcoder.common.core.utils.SpringUtils;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.datascope.annotation.DataScope;
+import com.supcoder.common.security.utils.SecurityUtils;
+import com.supcoder.system.api.domain.SysRole;
+import com.supcoder.system.api.domain.SysUser;
+import com.supcoder.system.domain.SysRoleDept;
+import com.supcoder.system.domain.SysRoleMenu;
+import com.supcoder.system.domain.SysUserRole;
+import com.supcoder.system.mapper.SysRoleDeptMapper;
+import com.supcoder.system.mapper.SysRoleMapper;
+import com.supcoder.system.mapper.SysRoleMenuMapper;
+import com.supcoder.system.mapper.SysUserRoleMapper;
+import com.supcoder.system.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * 角色 业务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysRoleServiceImpl implements ISysRoleService

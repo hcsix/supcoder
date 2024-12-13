@@ -1,8 +1,8 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.system.api.domain.SysLogininfor;
-import com.ruoyi.system.mapper.SysLogininforMapper;
-import com.ruoyi.system.service.ISysLogininforService;
+import com.supcoder.system.api.domain.SysLogininfor;
+import com.supcoder.system.mapper.SysLogininforMapper;
+import com.supcoder.system.service.ISysLogininforService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 系统访问日志情况信息 服务层处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysLogininforServiceImpl implements ISysLogininforService

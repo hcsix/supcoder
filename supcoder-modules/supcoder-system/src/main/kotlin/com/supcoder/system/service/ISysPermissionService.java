@@ -1,13 +1,13 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.domain.SysUser;
+import com.supcoder.system.api.domain.SysUser;
 
 import java.util.Set;
 
 /**
  * 权限信息 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysPermissionService
 {

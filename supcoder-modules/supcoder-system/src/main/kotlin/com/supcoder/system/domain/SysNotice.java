@@ -1,7 +1,7 @@
 package com.supcoder.system.domain;
 
-import com.ruoyi.common.core.web.domain.BaseEntity;
-import com.ruoyi.common.core.xss.Xss;
+import com.supcoder.common.core.web.domain.BaseEntity;
+import com.supcoder.common.core.xss.Xss;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 /**
  * 通知公告表 sys_notice
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public class SysNotice extends BaseEntity
 {

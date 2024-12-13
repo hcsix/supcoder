@@ -1,12 +1,12 @@
 package com.supcoder.system.service.impl;
 
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.system.api.domain.SysRole;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.service.ISysMenuService;
-import com.ruoyi.system.service.ISysPermissionService;
-import com.ruoyi.system.service.ISysRoleService;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.system.api.domain.SysRole;
+import com.supcoder.system.api.domain.SysUser;
+import com.supcoder.system.service.ISysMenuService;
+import com.supcoder.system.service.ISysPermissionService;
+import com.supcoder.system.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * 用户权限处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class SysPermissionServiceImpl implements ISysPermissionService

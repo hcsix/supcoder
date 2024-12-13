@@ -1,6 +1,6 @@
 package com.supcoder.system.mapper.mapper;
 
-import com.ruoyi.system.domain.SysMenu;
+import com.supcoder.system.domain.SysMenu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 菜单表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysMenuMapper
 {

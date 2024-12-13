@@ -1,12 +1,12 @@
 package com.supcoder.system.service;
 
-import com.ruoyi.system.api.model.LoginUser;
-import com.ruoyi.system.domain.SysUserOnline;
+import com.supcoder.system.api.model.LoginUser;
+import com.supcoder.system.domain.SysUserOnline;
 
 /**
  * 在线用户 服务层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface ISysUserOnlineService
 {

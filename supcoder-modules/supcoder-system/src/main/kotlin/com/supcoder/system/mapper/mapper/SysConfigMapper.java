@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper.mapper;
 
-import com.ruoyi.system.domain.SysConfig;
+import com.supcoder.system.domain.SysConfig;
 
 import java.util.List;
 
 /**
  * 参数配置 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysConfigMapper
 {

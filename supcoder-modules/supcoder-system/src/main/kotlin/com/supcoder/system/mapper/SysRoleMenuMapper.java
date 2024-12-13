@@ -1,13 +1,13 @@
 package com.supcoder.system.mapper;
 
-import com.ruoyi.system.domain.SysRoleMenu;
+import com.supcoder.system.domain.SysRoleMenu;
 
 import java.util.List;
 
 /**
  * 角色与菜单关联表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysRoleMenuMapper
 {

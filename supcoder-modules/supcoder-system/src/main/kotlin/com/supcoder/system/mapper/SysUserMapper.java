@@ -1,6 +1,6 @@
 package com.supcoder.system.mapper;
 
-import com.ruoyi.system.api.domain.SysUser;
+import com.supcoder.system.api.domain.SysUser;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 用户表 数据层
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public interface SysUserMapper
 {

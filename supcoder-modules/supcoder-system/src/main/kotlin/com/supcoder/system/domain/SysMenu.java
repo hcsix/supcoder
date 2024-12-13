@@ -1,6 +1,6 @@
 package com.supcoder.system.domain;
 
-import com.ruoyi.common.core.web.domain.BaseEntity;
+import com.supcoder.common.core.web.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 菜单权限表 sys_menu
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public class SysMenu extends BaseEntity
 {
