@@ -1,6 +1,5 @@
-package com.supcoder.system.domain.model;
+package com.supcoder.lottery.domain;
 
-import com.supcoder.hub.db.model.LotteryItemVo;
 
 import java.util.List;
 

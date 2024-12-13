@@ -1,4 +1,4 @@
-package com.supcoder.system.domain.model;
+package com.supcoder.lottery.domain;
 
 
 /**

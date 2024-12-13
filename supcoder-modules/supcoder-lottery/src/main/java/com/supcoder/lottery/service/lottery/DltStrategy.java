@@ -1,13 +1,14 @@
-package com.supcoder.system.service.lottery;
+package com.supcoder.lottery.service.lottery;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.supcoder.hub.db.constants.Constants;
-import com.supcoder.hub.db.dao.LotteryDaletouMapper;
-import com.supcoder.hub.db.domain.LotteryDaletou;
-import com.supcoder.hub.db.domain.LotteryDaletouExample;
-import com.supcoder.hub.db.model.LotteryItemVo;
-import com.supcoder.hub.db.model.LotteryVo;
+import com.supcoder.lottery.constants.Constants;
+import com.supcoder.lottery.domain.LotteryDaletou;
+import com.supcoder.lottery.domain.LotteryDaletouExample;
+import com.supcoder.lottery.domain.LotteryItemVo;
+import com.supcoder.lottery.domain.LotteryVo;
+import com.supcoder.lottery.mapper.LotteryDaletouMapper;
+
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,10 +21,10 @@ import java.util.Optional;
  * @author lee
  * @date 2024/12/11
  */
-public class DaletouStrategy implements ILotteryStrategy {
+public class DltStrategy implements ILotteryStrategy {
     private final LotteryDaletouMapper mapper;
 
-    public DaletouStrategy(LotteryDaletouMapper mapper) {
+    public DltStrategy(LotteryDaletouMapper mapper) {
         this.mapper = mapper;
     }
 

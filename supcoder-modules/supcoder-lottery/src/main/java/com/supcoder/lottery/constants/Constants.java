@@ -1,4 +1,4 @@
-package com.supcoder.system.constants;
+package com.supcoder.lottery.constants;
 
 /**
  * Constants

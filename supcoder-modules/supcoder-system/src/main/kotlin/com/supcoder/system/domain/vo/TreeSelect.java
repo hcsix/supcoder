@@ -1,10 +1,10 @@
 package com.supcoder.system.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.system.api.domain.SysDept;
-import com.ruoyi.system.domain.SysMenu;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.system.api.domain.SysDept;
+import com.supcoder.system.domain.SysMenu;
 
 import java.io.Serializable;
 import java.util.List;

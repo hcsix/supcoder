@@ -1,4 +1,16 @@
-package com.supcoder.system.controller;
+package com.supcoder.lottery.controller;
+
+
+import com.supcoder.common.core.web.controller.BaseController;
+import com.supcoder.common.core.web.domain.AjaxResult;
+import com.supcoder.lottery.domain.LotteryDataVo;
+import com.supcoder.lottery.domain.LotteryType;
+import com.supcoder.lottery.domain.LotteryVo;
+import com.supcoder.lottery.service.LotteryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * LotteryController
@@ -6,21 +18,10 @@ package com.supcoder.system.controller;
  * @author lee
  * @date 2024/12/11
  */
-import com.supcoder.hub.core.util.JsonResult;
-import com.supcoder.hub.core.util.ResultUtil;
-import com.supcoder.hub.db.model.LotteryDataVo;
-import com.supcoder.hub.db.model.LotteryVo;
-import com.supcoder.hub.db.domain.LotteryType;
-import com.supcoder.hub.db.service.LotteryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/lottery")
-public class LotteryController {
+public class LotteryController extends BaseController {
 
     @Autowired
     private LotteryService lotteryService;
@@ -34,76 +35,76 @@ public class LotteryController {
 
 
     @GetMapping("/types")
-    public ResponseEntity<JsonResult<List<LotteryType>>> getSupportedLotteryTypes(
+    public AjaxResult getSupportedLotteryTypes(
             @RequestParam String app_id,
             @RequestParam String app_secret) {
         if (!isValidApp(app_id, app_secret)) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
+            return error("Invalid app_id or app_secret");
         }
         List<LotteryType> types = lotteryService.getSupportedLotteryTypes();
-        return ResponseEntity.ok(ResultUtil.success(types));
+        return success(types);
     }
 
 
     @GetMapping("/{lotteryType}/{issueNumber}")
-    public ResponseEntity<JsonResult<?>> getLotteryResultByIssueNumber(
+    public AjaxResult getLotteryResultByIssueNumber(
             @PathVariable String lotteryType,
             @PathVariable String issueNumber,
             @RequestParam String app_id,
             @RequestParam String app_secret) {
         if (!isValidApp(app_id, app_secret)) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
+            return error("Invalid app_id or app_secret");
         }
         LotteryVo result = lotteryService.getLotteryVoByIssueNumber(lotteryType, issueNumber);
         if (result == null) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Lottery result not found"));
+            return error("Lottery result not found");
         }
-        return ResponseEntity.ok(ResultUtil.success(result));
+        return success(result);
     }
 
     @GetMapping("/{lotteryType}/latest")
-    public ResponseEntity<JsonResult<LotteryVo>> getLatestLotteryResult(
+    public AjaxResult getLatestLotteryResult(
             @PathVariable String lotteryType,
             @RequestParam String app_id,
             @RequestParam String app_secret) {
         if (!isValidApp(app_id, app_secret)) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
+            return error("Invalid app_id or app_secret");
         }
 
         LotteryVo result = lotteryService.getLatestLotteryResult(lotteryType);
         if (result == null) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Latest lottery result not found"));
+            return error("Latest lottery result not found");
         }
-        return ResponseEntity.ok(ResultUtil.success(result));
+        return success(result);
     }
 
     @GetMapping("/{lotteryType}/history")
-    public ResponseEntity<JsonResult<List<LotteryVo>>> getRecentLotteryHistory(
+    public AjaxResult getRecentLotteryHistory(
             @PathVariable String lotteryType,
             @RequestParam(defaultValue = "10") int limit,
             @RequestParam String app_id,
             @RequestParam String app_secret) {
         if (!isValidApp(app_id, app_secret)) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
+            return error("Invalid app_id or app_secret");
         }
         List<LotteryVo> results = lotteryService.getRecentLotteryHistory(lotteryType, limit);
-        return ResponseEntity.ok(ResultUtil.success(results));
+        return success(results);
     }
 
 
     @PostMapping("/manager/updateLottery")
-    public ResponseEntity<JsonResult<?>> updateLottery(
+    public AjaxResult updateLottery(
             @RequestBody LotteryDataVo lotteryData
     ) {
 //        if (!isValidApp(app_id, app_secret)) {
-//            return ResponseEntity.ok(ResultUtil.error(502, "Invalid app_id or app_secret"));
+//            return error( "Invalid app_id or app_secret");
 //        }
         // 调用服务方法更新彩票结果
         boolean updated = lotteryService.updateLottery(lotteryData.getLotteryItems());
         if (!updated) {
-            return ResponseEntity.ok(ResultUtil.error(502, "Failed to update lottery result"));
+            return error("Failed to update lottery result");
         }
-        return ResponseEntity.ok(ResultUtil.success("Lottery result updated successfully"));
+        return success("Lottery result updated successfully");
     }
 
 

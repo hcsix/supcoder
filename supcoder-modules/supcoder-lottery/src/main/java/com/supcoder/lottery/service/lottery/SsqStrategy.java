@@ -1,13 +1,13 @@
-package com.supcoder.system.service.lottery;
+package com.supcoder.lottery.service.lottery;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.supcoder.hub.db.constants.Constants;
-import com.supcoder.hub.db.dao.LotteryShuangseqiuMapper;
-import com.supcoder.hub.db.domain.LotteryShuangseqiu;
-import com.supcoder.hub.db.domain.LotteryShuangseqiuExample;
-import com.supcoder.hub.db.model.LotteryItemVo;
-import com.supcoder.hub.db.model.LotteryVo;
+import com.supcoder.lottery.constants.Constants;
+import com.supcoder.lottery.domain.LotteryItemVo;
+import com.supcoder.lottery.domain.LotteryShuangseqiu;
+import com.supcoder.lottery.domain.LotteryShuangseqiuExample;
+import com.supcoder.lottery.domain.LotteryVo;
+import com.supcoder.lottery.mapper.LotteryShuangseqiuMapper;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,10 +21,10 @@ import java.util.Optional;
  * @date 2024/12/11
  */
 
-public class ShuangseqiuStrategy implements ILotteryStrategy {
+public class SsqStrategy implements ILotteryStrategy {
     private final LotteryShuangseqiuMapper mapper;
 
-    public ShuangseqiuStrategy(LotteryShuangseqiuMapper mapper) {
+    public SsqStrategy(LotteryShuangseqiuMapper mapper) {
         this.mapper = mapper;
     }
 

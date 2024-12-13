@@ -1,4 +1,4 @@
-package com.supcoder.system.domain;
+package com.supcoder.lottery.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

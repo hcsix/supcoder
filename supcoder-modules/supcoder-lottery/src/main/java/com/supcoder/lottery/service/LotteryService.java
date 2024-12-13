@@ -1,15 +1,17 @@
-package com.supcoder.system.service;
+package com.supcoder.lottery.service;
 
-import com.supcoder.hub.db.constants.Constants;
-import com.supcoder.hub.db.dao.LotteryDaletouMapper;
-import com.supcoder.hub.db.dao.LotteryShuangseqiuMapper;
-import com.supcoder.hub.db.dao.LotteryTypeMapper;
-import com.supcoder.hub.db.domain.*;
-import com.supcoder.hub.db.model.LotteryItemVo;
-import com.supcoder.hub.db.model.LotteryVo;
-import com.supcoder.hub.db.service.lottery.DaletouStrategy;
-import com.supcoder.hub.db.service.lottery.ILotteryStrategy;
-import com.supcoder.hub.db.service.lottery.ShuangseqiuStrategy;
+
+import com.supcoder.lottery.constants.Constants;
+import com.supcoder.lottery.domain.LotteryItemVo;
+import com.supcoder.lottery.domain.LotteryType;
+import com.supcoder.lottery.domain.LotteryTypeExample;
+import com.supcoder.lottery.domain.LotteryVo;
+import com.supcoder.lottery.mapper.LotteryDaletouMapper;
+import com.supcoder.lottery.mapper.LotteryShuangseqiuMapper;
+import com.supcoder.lottery.mapper.LotteryTypeMapper;
+import com.supcoder.lottery.service.lottery.DltStrategy;
+import com.supcoder.lottery.service.lottery.ILotteryStrategy;
+import com.supcoder.lottery.service.lottery.SsqStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +33,8 @@ public class LotteryService {
     private final Map<String, ILotteryStrategy> lotteryStrategies = new HashMap<>();
 
     public LotteryService() {
-        lotteryStrategies.put(Constants.LOTTERY_TYPE_SSQ, new ShuangseqiuStrategy(lotteryShuangseqiuMapper));
-        lotteryStrategies.put(Constants.LOTTERY_TYPE_DLT, new DaletouStrategy(lotteryDaletouMapper));
+        lotteryStrategies.put(Constants.LOTTERY_TYPE_SSQ, new SsqStrategy(lotteryShuangseqiuMapper));
+        lotteryStrategies.put(Constants.LOTTERY_TYPE_DLT, new DltStrategy(lotteryDaletouMapper));
     }
 
     public List<LotteryType> getSupportedLotteryTypes() {

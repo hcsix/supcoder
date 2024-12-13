@@ -1,6 +1,6 @@
 package com.supcoder.system.domain.vo;
 
-import com.ruoyi.common.core.utils.StringUtils;
+import com.supcoder.common.core.utils.StringUtils;
 
 /**
  * 路由显示信息
