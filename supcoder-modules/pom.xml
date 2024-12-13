@@ -13,6 +13,7 @@
         <module>supcoder-gen</module>
         <module>supcoder-job</module>
         <module>supcoder-file</module>
+        <module>supcoder-lottery</module>
     </modules>
 
     <artifactId>modules</artifactId>

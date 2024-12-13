@@ -7,4 +7,5 @@ ${AnsiColor.BLUE}
      |____/   \___/  |_|      \____|  \___/  |____/  |_____| |_| \_\ (_)  \____|  \___/  |_|  |_|
 
 
------------版本号-----------${spring-boot.version}
+----------- ${spring.application.name} ${spring-boot.version} -----------
+
