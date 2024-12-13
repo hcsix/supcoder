@@ -2,7 +2,7 @@ package com.supcoder.lottery.schedule;
 
 import com.supcoder.lottery.domain.LotteryType;
 import com.supcoder.lottery.domain.LotteryVo;
-import com.supcoder.lottery.service.LotteryService;
+import com.supcoder.lottery.service.impl.LotteryServiceImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class LotteryDataFetchJob {
     private final Log logger = LogFactory.getLog(LotteryDataFetchJob.class);
 
     @Autowired
-    private LotteryService lotteryService;
+    private LotteryServiceImpl lotteryService;
 
     /**
      * 定时任务，每天凌晨4点获取彩票数据

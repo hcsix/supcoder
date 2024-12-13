@@ -1,4 +1,4 @@
-package com.supcoder.lottery.service.lottery;
+package com.supcoder.lottery.service.impl.lottery;
 
 
 import com.supcoder.lottery.domain.LotteryItemVo;

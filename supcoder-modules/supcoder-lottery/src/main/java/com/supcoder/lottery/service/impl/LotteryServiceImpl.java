@@ -1,4 +1,4 @@
-package com.supcoder.lottery.service;
+package com.supcoder.lottery.service.impl;
 
 
 import com.supcoder.lottery.constants.Constants;
@@ -9,9 +9,10 @@ import com.supcoder.lottery.domain.LotteryVo;
 import com.supcoder.lottery.mapper.LotteryDaletouMapper;
 import com.supcoder.lottery.mapper.LotteryShuangseqiuMapper;
 import com.supcoder.lottery.mapper.LotteryTypeMapper;
-import com.supcoder.lottery.service.lottery.DltStrategy;
-import com.supcoder.lottery.service.lottery.ILotteryStrategy;
-import com.supcoder.lottery.service.lottery.SsqStrategy;
+import com.supcoder.lottery.service.ILotteryService;
+import com.supcoder.lottery.service.impl.lottery.DltStrategy;
+import com.supcoder.lottery.service.impl.lottery.ILotteryStrategy;
+import com.supcoder.lottery.service.impl.lottery.SsqStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
-public class LotteryService {
+public class LotteryServiceImpl implements ILotteryService {
 
     @Autowired
     private LotteryTypeMapper lotteryTypeMapper;
@@ -32,21 +33,25 @@ public class LotteryService {
 
     private final Map<String, ILotteryStrategy> lotteryStrategies = new HashMap<>();
 
-    public LotteryService() {
+    public LotteryServiceImpl() {
         lotteryStrategies.put(Constants.LOTTERY_TYPE_SSQ, new SsqStrategy(lotteryShuangseqiuMapper));
         lotteryStrategies.put(Constants.LOTTERY_TYPE_DLT, new DltStrategy(lotteryDaletouMapper));
     }
 
+
+    @Override
     public List<LotteryType> getSupportedLotteryTypes() {
         LotteryTypeExample example = new LotteryTypeExample();
         example.createCriteria().andEnabledEqualTo(true);
         return lotteryTypeMapper.selectByExample(example);
     }
 
+    @Override
     public LotteryVo getLotteryVoByIssueNumber(String lotteryType, String issueNumber) {
         return getLotteryVo(lotteryType, issueNumber, false);
     }
 
+    @Override
     public LotteryVo getLotteryWinningInfo(String lotteryType, String issueNumber) {
         return getLotteryVo(lotteryType, issueNumber, true);
     }
@@ -57,12 +62,13 @@ public class LotteryService {
                 .orElse(null);
     }
 
+    @Override
     public LotteryVo getLatestLotteryResult(String lotteryType) {
         return Optional.ofNullable(lotteryStrategies.get(lotteryType))
                 .map(ILotteryStrategy::getLatestLotteryResult)
                 .orElse(null);
     }
-
+    @Override
     public List<LotteryVo> getRecentLotteryHistory(String lotteryType, int limit) {
         return Optional.ofNullable(lotteryStrategies.get(lotteryType))
                 .map(strategy -> strategy.getRecentLotteryHistory(limit))
@@ -70,6 +76,7 @@ public class LotteryService {
     }
 
 
+    @Override
     public boolean updateLottery( List<LotteryItemVo>  lotteryData) {
         try {
             lotteryData.forEach(lotteryItem -> {

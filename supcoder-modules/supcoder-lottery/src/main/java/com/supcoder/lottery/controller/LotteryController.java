@@ -6,7 +6,8 @@ import com.supcoder.common.core.web.domain.AjaxResult;
 import com.supcoder.lottery.domain.LotteryDataVo;
 import com.supcoder.lottery.domain.LotteryType;
 import com.supcoder.lottery.domain.LotteryVo;
-import com.supcoder.lottery.service.LotteryService;
+import com.supcoder.lottery.service.ILotteryService;
+import com.supcoder.lottery.service.impl.LotteryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ import java.util.List;
 public class LotteryController extends BaseController {
 
     @Autowired
-    private LotteryService lotteryService;
+    private ILotteryService lotteryService;
 
     private boolean isValidApp(String appId, String appSecret) {
         // 这里可以添加对 app_id 和 app_secret 的验证逻辑
