@@ -10,9 +10,9 @@
 
     <modules>
         <module>supcoder-system</module>
-<!--        <module>supcoder-gen</module>-->
-<!--        <module>supcoder-job</module>-->
-<!--        <module>supcoder-file</module>-->
+        <module>supcoder-gen</module>
+        <module>supcoder-job</module>
+        <module>supcoder-file</module>
     </modules>
 
     <artifactId>modules</artifactId>
