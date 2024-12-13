@@ -1,6 +1,6 @@
 package com.supcoder.system.dashboard.schedule;
 
-import com.supcoder.hub.db.util.DbUtil;
+import com.supcoder.system.util.DbUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

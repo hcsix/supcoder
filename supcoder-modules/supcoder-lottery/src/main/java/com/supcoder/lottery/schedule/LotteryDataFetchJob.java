@@ -1,8 +1,8 @@
-package com.supcoder.system.dashboard.schedule;
+package com.supcoder.lottery.schedule;
 
-import com.supcoder.hub.db.domain.LotteryType;
-import com.supcoder.hub.db.model.LotteryVo;
-import com.supcoder.hub.db.service.LotteryService;
+import com.supcoder.lottery.domain.LotteryType;
+import com.supcoder.lottery.domain.LotteryVo;
+import com.supcoder.lottery.service.LotteryService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
