@@ -1,9 +1,9 @@
 package com.supcoder.system.api.factory;
 
-import com.ruoyi.common.core.domain.R;
-import com.ruoyi.system.api.RemoteLogService;
-import com.ruoyi.system.api.domain.SysLogininfor;
-import com.ruoyi.system.api.domain.SysOperLog;
+import com.supcoder.common.core.domain.R;
+import com.supcoder.system.api.RemoteLogService;
+import com.supcoder.system.api.domain.SysLogininfor;
+import com.supcoder.system.api.domain.SysOperLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.FallbackFactory;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * 日志服务降级处理
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Component
 public class RemoteLogFallbackFactory implements FallbackFactory<RemoteLogService>

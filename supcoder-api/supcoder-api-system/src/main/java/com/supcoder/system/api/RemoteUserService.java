@@ -1,18 +1,18 @@
 package com.supcoder.system.api;
 
-import com.ruoyi.common.core.constant.SecurityConstants;
-import com.ruoyi.common.core.constant.ServiceNameConstants;
-import com.ruoyi.common.core.domain.R;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.api.factory.RemoteUserFallbackFactory;
-import com.ruoyi.system.api.model.LoginUser;
+import com.supcoder.common.core.constant.SecurityConstants;
+import com.supcoder.common.core.constant.ServiceNameConstants;
+import com.supcoder.common.core.domain.R;
+import com.supcoder.system.api.domain.SysUser;
+import com.supcoder.system.api.factory.RemoteUserFallbackFactory;
+import com.supcoder.system.api.model.LoginUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户服务
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = RemoteUserFallbackFactory.class)
 public interface RemoteUserService

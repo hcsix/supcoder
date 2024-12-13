@@ -1,9 +1,9 @@
 package com.supcoder.system.api;
 
-import com.ruoyi.common.core.constant.ServiceNameConstants;
-import com.ruoyi.common.core.domain.R;
-import com.ruoyi.system.api.domain.SysFile;
-import com.ruoyi.system.api.factory.RemoteFileFallbackFactory;
+import com.supcoder.common.core.constant.ServiceNameConstants;
+import com.supcoder.common.core.domain.R;
+import com.supcoder.system.api.domain.SysFile;
+import com.supcoder.system.api.factory.RemoteFileFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 文件服务
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @FeignClient(contextId = "remoteFileService", value = ServiceNameConstants.FILE_SERVICE, fallbackFactory = RemoteFileFallbackFactory.class)
 public interface RemoteFileService
