@@ -1,0 +1,2 @@
+com.supcoder.common.log.service.AsyncLogService
+com.supcoder.common.log.aspect.LogAspect

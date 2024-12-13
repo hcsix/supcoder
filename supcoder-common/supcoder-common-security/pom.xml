@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.supcoder</groupId>
+        <artifactId>common</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>common-security</artifactId>
+
+    <description>
+        supcoder-common-security安全模块
+    </description>
+
+    <dependencies>
+
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <!-- supcoder Api System -->
+        <dependency>
+            <groupId>com.supcoder</groupId>
+            <artifactId>api-system</artifactId>
+        </dependency>
+
+        <!-- supcoder Common Redis-->
+        <dependency>
+            <groupId>com.supcoder</groupId>
+            <artifactId>common-redis</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.supcoder</groupId>
+        <artifactId>hub</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>supcoder-common-log</module>
+        <module>supcoder-common-core</module>
+        <module>supcoder-common-redis</module>
+<!--        <module>supcoder-common-seata</module>-->
+        <module>supcoder-common-swagger</module>
+<!--        <module>supcoder-common-security</module>-->
+<!--        <module>supcoder-common-sensitive</module>-->
+<!--        <module>supcoder-common-datascope</module>-->
+<!--        <module>supcoder-common-datasource</module>-->
+    </modules>
+
+    <artifactId>common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        supcoder-common通用模块
+    </description>
+
+</project>
