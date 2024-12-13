@@ -1,16 +1,16 @@
 package com.supcoder.system.api.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ruoyi.common.core.annotation.Excel;
-import com.ruoyi.common.core.annotation.Excel.ColumnType;
-import com.ruoyi.common.core.web.domain.BaseEntity;
+import com.supcoder.common.core.annotation.Excel;
+import com.supcoder.common.core.annotation.Excel.ColumnType;
+import com.supcoder.common.core.web.domain.BaseEntity;
 
 import java.util.Date;
 
 /**
  * 系统访问记录表 sys_logininfor
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public class SysLogininfor extends BaseEntity
 {

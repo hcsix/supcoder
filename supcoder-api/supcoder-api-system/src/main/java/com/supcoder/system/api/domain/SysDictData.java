@@ -1,9 +1,9 @@
 package com.supcoder.system.api.domain;
 
-import com.ruoyi.common.core.annotation.Excel;
-import com.ruoyi.common.core.annotation.Excel.ColumnType;
-import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.web.domain.BaseEntity;
+import com.supcoder.common.core.annotation.Excel;
+import com.supcoder.common.core.annotation.Excel.ColumnType;
+import com.supcoder.common.core.constant.UserConstants;
+import com.supcoder.common.core.web.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 /**
  * 字典数据表 sys_dict_data
  * 
- * @author ruoyi
+ * @author supcoder
  */
 public class SysDictData extends BaseEntity
 {

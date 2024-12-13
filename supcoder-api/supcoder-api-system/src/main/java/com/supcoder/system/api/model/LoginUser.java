@@ -1,6 +1,6 @@
 package com.supcoder.system.api.model;
 
-import com.ruoyi.system.api.domain.SysUser;
+import com.supcoder.system.api.domain.SysUser;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * 用户信息
  *
- * @author ruoyi
+ * @author supcoder
  */
 public class LoginUser implements Serializable
 {

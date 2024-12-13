@@ -1,4 +1,4 @@
-package com.supcoder.hub.core.model;
+package com.supcoder.common.core.model;
 
 /**
  * ApiKey
