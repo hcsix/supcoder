@@ -1,17 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.supcoder</groupId>
-        <artifactId>hub</artifactId>
+        <artifactId>modules</artifactId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>auth</artifactId>
+    <artifactId>modules-system</artifactId>
 
     <description>
-        supcoder-auth认证授权中心
+        supcoder-modules-system系统模块
     </description>
 
     <dependencies>
@@ -34,22 +35,40 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
-        <!-- SpringBoot Web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <!-- SpringBoot Actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- supcoder Common Security-->
+        <!-- Mysql Connector -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+
+<!--        &lt;!&ndash; supcoder Common DataSource &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.supcoder</groupId>-->
+<!--            <artifactId>common-datasource</artifactId>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; supcoder Common DataScope &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.supcoder</groupId>-->
+<!--            <artifactId>common-datascope</artifactId>-->
+<!--        </dependency>-->
+
+        <!-- supcoder Common Log -->
         <dependency>
             <groupId>com.supcoder</groupId>
-            <artifactId>common-security</artifactId>
+            <artifactId>common-log</artifactId>
+        </dependency>
+
+        <!-- supcoder Common Swagger -->
+        <dependency>
+            <groupId>com.supcoder</groupId>
+            <artifactId>common-swagger</artifactId>
         </dependency>
 
     </dependencies>
