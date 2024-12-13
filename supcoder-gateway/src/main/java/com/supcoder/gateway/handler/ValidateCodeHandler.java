@@ -1,8 +1,8 @@
 package com.supcoder.gateway.handler;
 
-import com.ruoyi.common.core.exception.CaptchaException;
-import com.ruoyi.common.core.web.domain.AjaxResult;
-import com.ruoyi.gateway.service.ValidateCodeService;
+import com.supcoder.common.core.exception.CaptchaException;
+import com.supcoder.common.core.web.domain.AjaxResult;
+import com.supcoder.gateway.service.ValidateCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * 验证码获取
  *
- * @author ruoyi
+ * @author supcoder
  */
 @Component
 public class ValidateCodeHandler implements HandlerFunction<ServerResponse>

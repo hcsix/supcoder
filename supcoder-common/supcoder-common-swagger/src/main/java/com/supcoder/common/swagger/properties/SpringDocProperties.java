@@ -1,4 +1,4 @@
-package com.supcoder.common.swagger.swagger.properties;
+package com.supcoder.common.swagger.properties;
 
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.License;

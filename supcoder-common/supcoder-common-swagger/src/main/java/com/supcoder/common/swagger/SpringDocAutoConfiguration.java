@@ -1,6 +1,6 @@
-package com.supcoder.common.swagger.swagger;
+package com.supcoder.common.swagger;
 
-import com.supcoder.common.swagger.config.properties.SpringDocProperties;
+import com.supcoder.common.swagger.properties.SpringDocProperties;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

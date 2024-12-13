@@ -2,10 +2,10 @@ package com.supcoder.gateway.filter;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.ruoyi.common.core.utils.ServletUtils;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.gateway.config.properties.CaptchaProperties;
-import com.ruoyi.gateway.service.ValidateCodeService;
+import com.supcoder.common.core.utils.ServletUtils;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.gateway.config.properties.CaptchaProperties;
+import com.supcoder.gateway.service.ValidateCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * 验证码过滤器
  *
- * @author ruoyi
+ * @author supcoder
  */
 @Component
 public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object>

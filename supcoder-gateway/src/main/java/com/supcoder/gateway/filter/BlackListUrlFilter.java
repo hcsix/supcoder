@@ -1,6 +1,6 @@
 package com.supcoder.gateway.filter;
 
-import com.ruoyi.common.core.utils.ServletUtils;
+import com.supcoder.common.core.utils.ServletUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * 黑名单过滤器
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Component
 public class BlackListUrlFilter extends AbstractGatewayFilterFactory<BlackListUrlFilter.Config>

@@ -1,14 +1,14 @@
 package com.supcoder.gateway.filter;
 
-import com.ruoyi.common.core.constant.CacheConstants;
-import com.ruoyi.common.core.constant.HttpStatus;
-import com.ruoyi.common.core.constant.SecurityConstants;
-import com.ruoyi.common.core.constant.TokenConstants;
-import com.ruoyi.common.core.utils.JwtUtils;
-import com.ruoyi.common.core.utils.ServletUtils;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.redis.service.RedisService;
-import com.ruoyi.gateway.config.properties.IgnoreWhiteProperties;
+import com.supcoder.common.core.constant.CacheConstants;
+import com.supcoder.common.core.constant.HttpStatus;
+import com.supcoder.common.core.constant.SecurityConstants;
+import com.supcoder.common.core.constant.TokenConstants;
+import com.supcoder.common.core.utils.JwtUtils;
+import com.supcoder.common.core.utils.ServletUtils;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.redis.service.RedisService;
+import com.supcoder.gateway.config.properties.IgnoreWhiteProperties;
 import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
 /**
  * 网关鉴权
  * 
- * @author ruoyi
+ * @author supcoder
  */
 @Component
 public class AuthFilter implements GlobalFilter, Ordered

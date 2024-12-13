@@ -1,9 +1,12 @@
 package com.supcoder.auth;
 
+import com.supcoder.common.security.annotation.EnableRyFeignClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication
+@EnableRyFeignClients
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class SupcoderAuthApplication {
 
     public static void main(String[] args) {

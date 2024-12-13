@@ -1,16 +1,16 @@
 package com.supcoder.gateway.service.impl;
 
 import com.google.code.kaptcha.Producer;
-import com.ruoyi.common.core.constant.CacheConstants;
-import com.ruoyi.common.core.constant.Constants;
-import com.ruoyi.common.core.exception.CaptchaException;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.core.utils.sign.Base64;
-import com.ruoyi.common.core.utils.uuid.IdUtils;
-import com.ruoyi.common.core.web.domain.AjaxResult;
-import com.ruoyi.common.redis.service.RedisService;
-import com.ruoyi.gateway.config.properties.CaptchaProperties;
-import com.ruoyi.gateway.service.ValidateCodeService;
+import com.supcoder.common.core.constant.CacheConstants;
+import com.supcoder.common.core.constant.Constants;
+import com.supcoder.common.core.exception.CaptchaException;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.core.utils.sign.Base64;
+import com.supcoder.common.core.utils.uuid.IdUtils;
+import com.supcoder.common.core.web.domain.AjaxResult;
+import com.supcoder.common.redis.service.RedisService;
+import com.supcoder.gateway.config.properties.CaptchaProperties;
+import com.supcoder.gateway.service.ValidateCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FastByteArrayOutputStream;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 验证码实现处理
  *
- * @author ruoyi
+ * @author supcoder
  */
 @Service
 public class ValidateCodeServiceImpl implements ValidateCodeService

@@ -1,14 +1,14 @@
 package com.supcoder.gateway.service;
 
-import com.ruoyi.common.core.exception.CaptchaException;
-import com.ruoyi.common.core.web.domain.AjaxResult;
+import com.supcoder.common.core.exception.CaptchaException;
+import com.supcoder.common.core.web.domain.AjaxResult;
 
 import java.io.IOException;
 
 /**
  * 验证码处理
  *
- * @author ruoyi
+ * @author supcoder
  */
 public interface ValidateCodeService
 {

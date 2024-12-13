@@ -1,6 +1,6 @@
 package com.supcoder.gateway.handler;
 
-import com.ruoyi.common.core.utils.ServletUtils;
+import com.supcoder.common.core.utils.ServletUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;

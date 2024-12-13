@@ -1,8 +1,8 @@
 package com.supcoder.gateway.filter;
 
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.core.utils.html.EscapeUtil;
-import com.ruoyi.gateway.config.properties.XssProperties;
+import com.supcoder.common.core.utils.StringUtils;
+import com.supcoder.common.core.utils.html.EscapeUtil;
+import com.supcoder.gateway.config.properties.XssProperties;
 import io.netty.buffer.ByteBufAllocator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * 跨站脚本过滤器
  *
- * @author ruoyi
+ * @author supcoder
  */
 @Component
 @ConditionalOnProperty(value = "security.xss.enabled", havingValue = "true")
